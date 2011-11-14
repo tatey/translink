@@ -1,0 +1,25 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.6)
+    crack (0.3.1)
+    mechanize (2.0.1)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 1.8)
+      nokogiri (~> 1.4)
+      webrobots (~> 0.0, >= 0.0.9)
+    net-http-digest_auth (1.1.1)
+    net-http-persistent (1.9)
+    nokogiri (1.5.0)
+    webmock (1.7.7)
+      addressable (~> 2.2, > 2.2.5)
+      crack (>= 0.1.7)
+    webrobots (0.0.12)
+      nokogiri (>= 1.4.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mechanize
+  webmock
