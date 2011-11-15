@@ -11,10 +11,6 @@ module Translink
         page.search 'table tr td:first-child a'
       end
       
-      def routes
-        anchors.each { |anchor| Route.new anchor[:href] }
-      end
-      
       def page
         @page ||= Mechanize.new.get url
       end
