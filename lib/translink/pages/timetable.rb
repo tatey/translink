@@ -1,6 +1,6 @@
 module Translink
   module Pages
-    class Timetables
+    class Timetable
       attr_reader :page, :url
       
       def initialize url
