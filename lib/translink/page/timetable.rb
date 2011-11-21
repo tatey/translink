@@ -4,22 +4,26 @@ module Translink
       attr_reader :page, :url
       
       def initialize url
-        @url = url
+        @url = URI.parse url
       end
       
       def page
-        @page ||= Mechanize.new.get url
+        @page ||= Mechanize.new.get url.to_s
       end
       
       def routes
-        anchors.map { |anchor| Route.new anchor['href'] }
+        anchors.map { |anchor| Route.new absolute_url(anchor['href']) }
       end
       
     protected
     
+      def absolute_url path
+        url.scheme + '://' + url.host + path
+      end
+    
       def anchors
         page.search 'table tr td:first-child a'
-      end
+      end      
     end
   end
 end

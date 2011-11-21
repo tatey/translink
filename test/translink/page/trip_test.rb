@@ -1,7 +1,7 @@
 require 'helper'
 
 class Page::TripTest < MiniTest::Unit::TestCase
-  def test_initialization_writes_attributes    
+  def test_initialize    
     assert_equal 'http://localhost', Page::Trip.new('http://localhost').url
   end
   

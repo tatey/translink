@@ -7,6 +7,10 @@ module Translink
         @url = url
       end
       
+      def code
+        page.search('div#contentleftCol table th:nth-child(2)').first.text.strip
+      end
+      
       def date
         Date.parse page.search('div#contentleftCol div.content p span').text
       end

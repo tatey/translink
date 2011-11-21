@@ -3,15 +3,17 @@ GEM
   specs:
     addressable (2.2.6)
     crack (0.3.1)
+    dm-core (1.2.0)
+      addressable (~> 2.2.6)
     mechanize (2.0.1)
-      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-digest_auth (>= 1.1.1, ~> 1.1)
       net-http-persistent (~> 1.8)
       nokogiri (~> 1.4)
-      webrobots (~> 0.0, >= 0.0.9)
+      webrobots (>= 0.0.9, ~> 0.0)
     net-http-digest_auth (1.1.1)
     net-http-persistent (1.9)
     nokogiri (1.5.0)
-    webmock (1.7.7)
+    webmock (1.7.8)
       addressable (~> 2.2, > 2.2.5)
       crack (>= 0.1.7)
     webrobots (0.0.12)
@@ -21,5 +23,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dm-core
   mechanize
   webmock
