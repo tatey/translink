@@ -7,10 +7,6 @@ module Translink
         @url = url
       end
       
-      def anchors
-        page.search 'table:not(:last-child) td a'
-      end
-      
       def date
         Date.parse page.search('div#contentleftCol div.content p span').text
       end
@@ -25,7 +21,17 @@ module Translink
       
       def page
         @page ||= Mechanize.new.get url
-      end      
+      end
+      
+      def trips
+        anchors.map { |anchor| Trip.new anchor[:href] }
+      end
+      
+    protected
+    
+      def anchors
+        page.search 'table:not(:last-child) td a'
+      end
     end
   end
 end

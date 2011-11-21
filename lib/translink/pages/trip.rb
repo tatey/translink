@@ -6,17 +6,13 @@ module Translink
       def initialize url
         @url = url
       end
-      
+
       def stops
-        table_rows.search('td:first-child').map do |td|
-          td.text.strip
-        end
+        table_rows.search('td:first-child').map { |td| td.text.strip }
       end
       
       def times
-        table_rows.search('td:last-child').map do |td|
-          td.text.strip
-        end
+        table_rows.search('td:last-child').map { |td| td.text.strip }
       end
       
       def page

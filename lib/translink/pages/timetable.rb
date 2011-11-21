@@ -1,7 +1,7 @@
 module Translink
   module Pages
     class Timetable
-      attr_reader :page, :routes, :url
+      attr_reader :page, :url
       
       def initialize url
         @url = url
@@ -12,7 +12,7 @@ module Translink
       end
       
       def routes
-        @routes ||= anchors.map { |anchor| Route.new anchor['href'] }
+        anchors.map { |anchor| Route.new anchor['href'] }
       end
       
     protected
