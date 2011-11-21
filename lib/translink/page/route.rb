@@ -1,5 +1,5 @@
 module Translink
-  module Pages
+  module Page
     class Route
       attr_reader :page, :url
       

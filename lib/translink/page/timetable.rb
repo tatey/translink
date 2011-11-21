@@ -1,5 +1,5 @@
 module Translink
-  module Pages
+  module Page
     class Timetable
       attr_reader :page, :url
       
