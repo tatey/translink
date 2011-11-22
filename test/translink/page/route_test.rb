@@ -2,7 +2,7 @@ require 'helper'
 
 class Page::RouteTest < MiniTest::Unit::TestCase
   def test_initialize    
-    assert_equal 'http://localhost', Page::Route.new('http://localhost').url
+    assert_equal 'http://localhost', Page::Route.new('http://localhost').url.to_s
   end
   
   def test_code
@@ -29,11 +29,15 @@ class Page::RouteTest < MiniTest::Unit::TestCase
     assert_equal 'City Buz 130 Via Sunnybank', Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').name
   end
   
-  def test_trips
+  def test_service_models
+    skip
+  end
+  
+  def test_trip_pages
     stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').
       to_return(:status => 200, :body => fixture('route.html'), :headers => {'Content-Type' => 'text/html'})
-    trips = Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').trips
-    assert_equal '/travel-information/services-and-timetables/trip-details/281889?timetableDate=2011-11-14', trips.first.url
-    assert_equal '/travel-information/services-and-timetables/trip-details/252074?timetableDate=2011-11-14', trips.last.url
+    trip_pages = Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').trip_pages
+    assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/trip-details/281889?timetableDate=2011-11-14', trip_pages.first.url.to_s
+    assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/trip-details/252074?timetableDate=2011-11-14', trip_pages.last.url.to_s
   end
 end

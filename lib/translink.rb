@@ -9,3 +9,5 @@ require 'translink/model/service'
 require 'translink/page/route'
 require 'translink/page/timetable'
 require 'translink/page/trip'
+
+DataMapper.finalize

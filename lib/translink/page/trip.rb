@@ -19,6 +19,10 @@ module Translink
         @page ||= Mechanize.new.get url
       end
       
+      def service_models
+        times.map { |time| Model::Service.new :time => time }
+      end
+      
     protected
     
       def table_rows

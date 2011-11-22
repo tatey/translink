@@ -11,7 +11,7 @@ module Translink
         @page ||= Mechanize.new.get url.to_s
       end
       
-      def routes
+      def route_pages
         anchors.map { |anchor| Route.new absolute_url(anchor['href']) }
       end
       

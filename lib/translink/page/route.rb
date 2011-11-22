@@ -4,7 +4,7 @@ module Translink
       attr_reader :page, :url
       
       def initialize url
-        @url = url
+        @url = URI.parse url
       end
       
       def code
@@ -27,14 +27,22 @@ module Translink
         @page ||= Mechanize.new.get url
       end
       
-      def trips
-        anchors.map { |anchor| Trip.new anchor[:href] }
+      def service_models
+        trip_pages.map { |trip_page| trip_page.service_models }.flatten
+      end
+      
+      def trip_pages
+        anchors.map { |anchor| Trip.new absolute_url(anchor[:href]) }
       end
       
     protected
     
+      def absolute_url path
+        url.scheme + '://' + url.host + path
+      end
+    
       def anchors
-        page.search 'table:not(:last-child) td a'
+        page.search 'table:not(:last-child) tfoot a'
       end
     end
   end
