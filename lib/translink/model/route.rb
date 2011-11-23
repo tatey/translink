@@ -10,14 +10,16 @@ module Translink
       
       has n, :services
       
-      def self.find_or_add route_page
+      def add_services_from_trip_pages *trip_pages
+        trip_pages.each do |trip_page|
+          services << trip_page.times.map { |time| Service.new :time => time }
+        end
+      end
+      
+      def self.find_or_add_from_route_page route_page
         first_or_create :code         => route_page.code,
                         :name         => route_page.name,
                         :translink_id => route_page.translink_id
-      end
-      
-      def add_services services
-        self.services << services
       end
     end
   end
