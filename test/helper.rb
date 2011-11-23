@@ -4,6 +4,6 @@ require 'webmock/minitest'
 
 include Translink
 
-def fixture name
-  File.read File.expand_path("../fixtures/#{name}", __FILE__)
+def fixture path
+  File.read File.expand_path("../fixtures/#{path}", __FILE__)
 end

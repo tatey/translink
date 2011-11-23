@@ -27,11 +27,11 @@ class CrawlerTest < MiniTest::Unit::TestCase
   
   def test_crawl
     stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables').
-      to_return(:status => 200, :body => fixture('small_timetable.html'), :headers => {'Content-Type' => 'text/html'})          
+      to_return(:status => 200, :body => fixture('sample/timetable.html'), :headers => {'Content-Type' => 'text/html'})          
     stub_request(:get, /http:\/\/jp.translink.com.au\/travel-information\/services-and-timetables\/buses\/view-bus-timetable\/\d+\?direction=(In|Out)bound&routeCode=[0-9A-Z]+&timetableDate=\d{4}-\d{2}-\d{2}/).
-      to_return(:status => 200, :body => fixture('small_route.html'), :headers => {'Content-Type' => 'text/html'})
+      to_return(:status => 200, :body => fixture('sample/route.html'), :headers => {'Content-Type' => 'text/html'})
     stub_request(:get, /http:\/\/jp.translink.com.au\/travel-information\/services-and-timetables\/trip-details\/\d+\?timetableDate=\d{4}-\d{2}-\d{2}/).
-      to_return(:status => 200, :body => fixture('trip.html'), :headers => {'Content-Type' => 'text/html'})
+      to_return(:status => 200, :body => fixture('verbatim/trip.html'), :headers => {'Content-Type' => 'text/html'})
     crawler = Crawler.new 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables'
     crawler.model_class = Model
     crawler.crawl
