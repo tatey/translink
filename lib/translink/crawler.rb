@@ -9,16 +9,10 @@ module Translink
     end
     
     def crawl
-      route_pages.each do |route_page|
-        model_instance = model_class.find_or_add route_page
-        model_instance.add_services route_page.service_models
+      Page::Timetable.new(url.to_s).route_pages.each do |route_page|
+        model_instance = model_class.find_or_add_from_route_page route_page
+        model_instance.add_services_from_trip_pages *route_page.trip_pages
       end
-    end
-    
-  protected
-  
-    def route_pages
-      Page::Timetable.new(url.to_s).route_pages
     end
   end
 end

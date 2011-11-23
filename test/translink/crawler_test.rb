@@ -2,17 +2,17 @@ require 'helper'
 
 class CrawlerTest < MiniTest::Unit::TestCase
   class Model
-    attr_reader :services
+    attr_reader :trip_pages
 
     def initialize
-      @services = []
+      @trip_pages = []
     end
 
-    def add_services services
-      @services += services
+    def add_services_from_trip_pages *trip_pages
+      @trip_pages += trip_pages
     end
 
-    def self.find_or_add route_page
+    def self.find_or_add_from_route_page route_page
       instance
     end
     
@@ -35,11 +35,7 @@ class CrawlerTest < MiniTest::Unit::TestCase
     crawler = Crawler.new 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables'
     crawler.model_class = Model
     crawler.crawl
-    assert_equal 150, Model.instance.services.size
-    
-    skip
-    
-    assert_equal '', Model.instance.services.first.time
-    assert_equal '', Model.instance.services.last.time
+    assert_equal 6, Model.instance.trip_pages.size
+    assert Model.instance.trip_pages.all? { |trip_page| trip_page.is_a? Page::Trip }
   end
 end

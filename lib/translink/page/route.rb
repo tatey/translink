@@ -27,10 +27,6 @@ module Translink
         @page ||= Mechanize.new.get url
       end
       
-      def service_models
-        trip_pages.map { |trip_page| trip_page.service_models }.flatten
-      end
-      
       def trip_pages
         anchors.map { |anchor| Trip.new absolute_url(anchor[:href]) }
       end
