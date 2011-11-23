@@ -16,7 +16,7 @@ module Translink
       end
       
       def times
-        table_rows.search('td:last-child').map { |td| date_time(td.text.strip) }
+        table_rows.search('td:last-child').map { |td| date_time td.text.strip }
       end
       
       def page
