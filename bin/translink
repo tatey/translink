@@ -3,3 +3,8 @@
 $: << File.expand_path('../lib', __FILE__)
 
 require 'translink'
+
+DataMapper.setup :default, ''
+DataMapper.auto_migrate!
+
+Translink::Crawler.new ''
