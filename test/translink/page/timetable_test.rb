@@ -18,4 +18,13 @@ class Page::TimetableTest < MiniTest::Unit::TestCase
     assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1953?timetableDate=2011-11-14&direction=Outbound&routeCode=10', route_pages.first.url.to_s
     assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/2503?timetableDate=2011-11-14&direction=Inbound&routeCode=TX5', route_pages.last.url.to_s
   end
+
+  def test_timetable_page
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables').
+      to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
+    stub_request(:post, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables').
+      to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
+    timetable_page = Page::Timetable.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables').timetable_page('2011-11-27')
+    assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables', timetable_page.url.to_s
+  end
 end

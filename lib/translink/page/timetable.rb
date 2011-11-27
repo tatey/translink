@@ -3,8 +3,9 @@ module Translink
     class Timetable
       attr_reader :page, :url
       
-      def initialize url
-        @url = URI.parse url
+      def initialize url, page = nil
+        @url  = URI.parse url
+        @page = nil
       end
       
       def page
@@ -13,6 +14,12 @@ module Translink
       
       def route_pages
         anchors.map { |anchor| Route.new absolute_url(anchor['href']) }
+      end
+      
+      def timetable_page date
+        form = page.forms[1]        
+        form.field_with(:name => 'TimetableDate').value = date
+        self.class.new absolute_url(form.action), form.submit
       end
       
     protected
