@@ -12,7 +12,8 @@ class Model::RouteTest < MiniTest::Unit::TestCase
     route_model = Model::Route.find_or_add_from_route_page route_page
     route_model.add_services_from_trip_pages trip_page, trip_page, trip_page
     assert_equal 3, route_model.services.count
-    assert route_model.services.all? { |service| service.time == time }
+    assert route_model.services.all? { |service| service.time == time }, "Expected time to be #{time}."
+    assert route_model.services.all? { |service| service.saved? }, 'Expected services to be saved.'
   end
   
   def test_find_or_add_from_route_page

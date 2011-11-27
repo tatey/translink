@@ -13,6 +13,7 @@ module Translink
       def add_services_from_trip_pages *trip_pages
         trip_pages.each do |trip_page|
           services.concat trip_page.times.map { |time| Service.new :time => time }
+          services.each &:save
         end
       end
       
