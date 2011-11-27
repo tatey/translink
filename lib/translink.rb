@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'dm-core'
 require 'dm-migrations'
+require 'logger'
 require 'mechanize'
 require 'uri'
 

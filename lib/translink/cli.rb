@@ -1,11 +1,12 @@
 module Translink
   class CLI
-    attr_reader :pwd
+    attr_accessor :logger, :pwd
     
     def initialize pwd
-      @pwd = pwd
+      self.logger = Logger.new($stdout).tap { |logger| logger.level = Logger::INFO }
+      self.pwd    = pwd
     end
-    
+
     def run line
       command = line.slice! /^\S+/
       input   = line.strip
@@ -19,7 +20,7 @@ module Translink
   protected
         
     def help input
-      puts "Help: TODO"
+      logger.info 'help'
     end
     
     def scrape input
