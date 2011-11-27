@@ -41,22 +41,22 @@ class CLITtest < MiniTest::Unit::TestCase
     assert_match /help/, @out.string
   end
   
-  def test_execute_scrape_command_with_uri
+  def test_execute_import_command_with_uri
     file = File.join TMPDIR, 'test.sqlite3'
     refute File.exists?(file), 'Expected file not to exist.'
-    @cli.run "scrape 2011-11-27 --uri=sqlite://#{file}"
+    @cli.run "import 2011-11-27 --uri=sqlite://#{file}"
     assert File.exists?(file), 'Expected file to exist.'
   end
 
-  def test_execute_scrape_command_with_date_writes_sqlite_database
+  def test_execute_import_command_with_date_writes_sqlite_database
     file = File.join TMPDIR, '2011-11-27.sqlite3'
     refute File.exists?(file), 'Expected file not to exist.'
-    @cli.run 'scrape 2011-11-27'
+    @cli.run 'import 2011-11-27'
     assert File.exists?(file), 'Expected file to exist.'
   end
   
-  def test_execute_scrape_command_without_date_executes_help_command
-    @cli.run 'scrape'
+  def test_execute_import_command_without_date_executes_help_command
+    @cli.run 'import'
     assert_match /help/, @out.string
   end
 end

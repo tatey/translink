@@ -24,7 +24,7 @@ module Translink
       logger.info 'help'
     end
     
-    def scrape input
+    def import input
       return help nil unless input =~ /^(\d{4}-\d{2}-\d{2})(\s+--uri="?(.+)"?)?$/
       date = $1
       uri  = $3 || 'sqlite://' + File.join(pwd, "#{date}.sqlite3")
