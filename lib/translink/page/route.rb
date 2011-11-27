@@ -27,6 +27,10 @@ module Translink
         @page ||= Mechanize.new.get url
       end
       
+      def translink_id
+        url.path.match(/([^\/]+)$/).captures.last
+      end
+      
       def trip_pages
         anchors.map { |anchor| Trip.new absolute_url(anchor[:href]) }
       end
