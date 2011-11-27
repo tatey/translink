@@ -1,4 +1,3 @@
-require 'dm-migrations'
 require 'minitest/autorun'
 require 'translink'
 require 'webmock/minitest'

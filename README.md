@@ -6,11 +6,11 @@ Scraper for http://translink.com.au/. Very much a work-in-progress. Use with cau
 
 Get all routes and services for Thursday, 24 November.
 
-    $ translink "2011-11-24"
+    $ translink scrape 2011-11-24
     
 Optionally specify the path to persist the SQLite database.
 
-    $ translink "2011-11-24" --path="/Users/Tate/Desktop/"
+    $ translink scrape 2011-11-24 --path="/Users/Tate/Downloads/Translink 2011-11-24.db"
 
 ## Copyright
 

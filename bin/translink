@@ -1,10 +1,7 @@
 #!/usr/bin/env ruby
 
-$: << File.expand_path('../lib', __FILE__)
+$: << File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'translink'
 
-DataMapper.setup :default, ''
-DataMapper.auto_migrate!
-
-Translink::Crawler.new ''
+Translink::CLI.new(Dir.pwd).run ARGV.join(' ')
