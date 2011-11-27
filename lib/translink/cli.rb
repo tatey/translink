@@ -1,10 +1,11 @@
 module Translink
   class CLI
-    attr_accessor :logger, :pwd
+    attr_accessor :crawler_class, :logger, :pwd
     
     def initialize pwd
-      self.logger = Logger.new($stdout).tap { |logger| logger.level = Logger::INFO }
-      self.pwd    = pwd
+      self.crawler_class = Translink::Crawler
+      self.logger        = Logger.new($stdout).tap { |logger| logger.level = Logger::INFO }
+      self.pwd           = pwd
     end
 
     def run line
@@ -29,7 +30,7 @@ module Translink
       path = $3 || 'sqlite://' + File.join(pwd, "#{date}.sqlite3")
       DataMapper.setup :default, "sqlite://#{path}"
       DataMapper.auto_migrate!
-      Translink::Crawler.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables').crawl
+      crawler_class.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables').crawl
     end
   end
 end
