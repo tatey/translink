@@ -15,9 +15,11 @@ module Translink
         help nil
       end
     end
+    
+  protected
         
     def help input
-      
+      puts "Help: TODO"
     end
     
     def scrape input
