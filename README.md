@@ -1,3 +1,7 @@
+# NOTE
+
+This project is a work-in-progress. Use with caution. Will make available as a gem at future data.
+
 # Translink
 
 [Translink](http://translink.com.au/) (Organisation) coordinates public transport operations in 
