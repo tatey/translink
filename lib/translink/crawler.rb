@@ -8,8 +8,9 @@ module Translink
       @url         = URI.parse url
     end
     
-    def crawl
-      Page::Timetable.new(url.to_s).route_pages.each do |route_page|
+    def crawl date
+      timetable_page = Page::Timetable.new(url.to_s).timetable_page date
+      timetable_page.route_pages.each do |route_page|
         model_instance = model_class.find_or_add_from_route_page route_page
         model_instance.add_services_from_trip_pages *route_page.trip_pages
       end

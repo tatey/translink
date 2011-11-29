@@ -8,7 +8,7 @@ class CLITtest < MiniTest::Unit::TestCase
 
     end
     
-    def crawl
+    def crawl date
 
     end
   end

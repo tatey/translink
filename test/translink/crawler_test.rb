@@ -32,9 +32,11 @@ class CrawlerTest < MiniTest::Unit::TestCase
       to_return(:status => 200, :body => fixture('sample/route.html'), :headers => {'Content-Type' => 'text/html'})
     stub_request(:get, /http:\/\/jp.translink.com.au\/travel-information\/services-and-timetables\/trip-details\/\d+\?timetableDate=\d{4}-\d{2}-\d{2}/).
       to_return(:status => 200, :body => fixture('verbatim/trip.html'), :headers => {'Content-Type' => 'text/html'})
+    stub_request(:post, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables').
+      to_return(:status => 200, :body => fixture('sample/timetable.html'), :headers => {'Content-Type' => 'text/html'})    
     crawler = Crawler.new 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables'
     crawler.model_class = Model
-    crawler.crawl
+    crawler.crawl Date.today
     assert_equal 6, Model.instance.trip_pages.size
     assert Model.instance.trip_pages.all? { |trip_page| trip_page.is_a? Page::Trip }
   end

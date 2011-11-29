@@ -24,7 +24,7 @@ class Page::TimetableTest < MiniTest::Unit::TestCase
       to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
     stub_request(:post, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables').
       to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
-    timetable_page = Page::Timetable.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables').timetable_page('2011-11-27')
+    timetable_page = Page::Timetable.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables').timetable_page Date.parse('2011-11-27')
     assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables', timetable_page.url.to_s
   end
 end

@@ -5,7 +5,7 @@ module Translink
       
       def initialize url, page = nil
         @url  = URI.parse url
-        @page = nil
+        @page = page
       end
       
       def page
@@ -18,7 +18,7 @@ module Translink
       
       def timetable_page date
         form = page.forms[1]        
-        form.field_with(:name => 'TimetableDate').value = date
+        form.field_with(:name => 'TimetableDate').value = date.to_s
         self.class.new absolute_url(form.action), form.submit
       end
       
