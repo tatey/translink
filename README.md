@@ -14,7 +14,7 @@ data is protected by [copyright](http://translink.com.au/site-information/legal/
 
 ## Usage
 
-Import all bus routes and services for Thursday, 24 November 2011 saving them a 
+Import all bus routes and services for Thursday, 24 November 2011 saving them into a 
 SQLite database named "2011-11-24.sqlite3" in the current working directory.
 
     $ translink import 2011-11-24
