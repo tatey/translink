@@ -1,6 +1,6 @@
 # NOTE
 
-This project is a work-in-progress. Use with caution. Will make available as a gem at future data.
+This project is a work-in-progress. Use with caution. Will make available as a gem in the future.
 
 # Translink
 
