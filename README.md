@@ -8,13 +8,13 @@ This project is a work-in-progress. Use with caution. It may be available as a g
 Brisbane. Their website has an abundance of data with no easy way for a developer
 to query it.
 
-Translink (Program) imports bus routes and service times into a nicely structured
+Translink (Program) imports bus stops, routes and service times into a nicely structured
 database. Data is sourced from the [Translink website](http://translink.com.au/). You should be aware their 
 data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
 ## Usage
 
-Import all bus routes and services for Thursday, 24 November 2011 saving them into a 
+Import all bus stops, routes and services for Thursday, 24 November 2011 saving them into a 
 SQLite database named "2011-11-24.sqlite3" in the current working directory.
 
     $ translink import 2011-11-24
@@ -32,7 +32,7 @@ Prefer not to use SQLite? Translink is compatible with any adapter supported by
     
 ## Schema
 
-![Class Analysis Diagram](http://f.cl.ly/items/0p2m0k3U1I2Z1d0c0g1V/translink_schema.png)
+![Class Analysis Diagram](https://github.com/tatey/translink/raw/master/doc/schema.png)
 
 ## Copyright
 
