@@ -17,7 +17,7 @@ class CLITtest < MiniTest::Unit::TestCase
     @out = StringIO.new
     @cli = CLI.new(TMPDIR).tap do |cli|
       cli.crawler_class = Crawler
-      cli.logger        = Logger.new(@out).tap { |logger| logger.level = Logger::INFO }
+      cli.out           = @out
     end
   end
   

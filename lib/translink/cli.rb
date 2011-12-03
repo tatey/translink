@@ -1,17 +1,19 @@
 module Translink
   class CLI
-    attr_accessor :crawler_class, :logger, :pwd
+    RUNNABLE = [:help, :import]
+    
+    attr_accessor :crawler_class, :out, :pwd
     
     def initialize pwd
       self.crawler_class = Translink::Crawler
-      self.logger        = Logger.new($stdout).tap { |logger| logger.level = Logger::INFO }
+      self.out           = $stdout
       self.pwd           = pwd
     end
 
     def run line
       command = line.slice! /^\S+/
       input   = line.strip
-      if command && respond_to?(command)
+      if command && RUNNABLE.include?(command.to_sym)
         send command, input
       else
         help nil
@@ -21,7 +23,7 @@ module Translink
   protected
         
     def help input
-      logger.info 'help'
+      log 'help'
     end
     
     def import input
@@ -32,6 +34,10 @@ module Translink
         crawler_instance = crawler_class.new 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables'
         crawler_instance.crawl date
       end
+    end
+    
+    def log message
+      out.puts message
     end
   end
 end
