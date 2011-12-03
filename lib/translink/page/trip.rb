@@ -13,11 +13,16 @@ module Translink
       def date
         Date.parse page.search('div#contentleftCol p span').text
       end
+      
+      def services
+        stops.zip(times).map { |attributes| Service.new *attributes }
+      end
 
       def stops
         table_rows.search('td:first-child').map do |td| 
-          Stop.new *td.text.strip.split("\n")
-        end        
+          attributes = td.text.strip.split "\n"
+          Stop.new *attributes
+        end
       end
       
       def times
