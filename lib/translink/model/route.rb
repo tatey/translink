@@ -9,11 +9,16 @@ module Translink
       property :translink_id, Integer
       
       has n, :services
+      has n, :stops, :through => :services
       
       def add_services_from_trip_pages *trip_pages
         trip_pages.each do |trip_page|
-          services.concat trip_page.times.map { |time| Service.new :time => time }
-          services.each &:save
+          trip_page.trips.each do |trip|     
+            services.new.tap do |service|
+              service.stop = Stop.new :name => trip.stop.name, :locality => trip.stop.locality
+              service.time = trip.time
+            end.save
+          end
         end
       end
       

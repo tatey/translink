@@ -7,6 +7,7 @@ module Translink
       property :time, DateTime
       
       belongs_to :route
+      belongs_to :stop
     end
   end
 end

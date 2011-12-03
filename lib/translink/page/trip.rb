@@ -9,13 +9,9 @@ module Translink
       def initialize url
         @url = url
       end
-      
+
       def date
         Date.parse page.search('div#contentleftCol p span').text
-      end
-      
-      def services
-        stops.zip(times).map { |attributes| Service.new *attributes }
       end
 
       def stops
@@ -27,6 +23,10 @@ module Translink
       
       def times
         table_rows.search('td:last-child').map { |td| date_time td.text.strip }
+      end
+      
+      def trips
+        stops.zip(times).map { |attributes| Service.new *attributes }
       end
       
       def page
