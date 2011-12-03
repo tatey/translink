@@ -1,7 +1,7 @@
 module Translink
   class Page::Trip < Page
-    Service = Struct.new :stop, :time
-    Stop    = Struct.new :name, :locality
+    Trip = Struct.new :stop, :time
+    Stop = Struct.new :name, :locality
 
     def date
       Date.parse page.search('div#contentleftCol p span').text
@@ -19,7 +19,7 @@ module Translink
     end
     
     def trips
-      stops.zip(times).map { |attributes| Service.new *attributes }
+      stops.zip(times).map { |attributes| Trip.new *attributes }
     end
     
   protected

@@ -3,9 +3,9 @@ require 'helper'
 class Model::RouteTest < MiniTest::Unit::TestCase
   def test_add_services_from_trip_pages
     DB.new('sqlite::memory:').use do
-      trip = Page::Trip::Service.new.tap do |trip|
-        trip.stop = Page::Trip::Stop.new 'Illaweena St (Waterstone)', 'Waterstone, Illaweena St far side of Waterbrooke Crt'
-        trip.time = DateTime.parse '2011-11-24 23:17:00'
+      trip = Page::Trip::Trip.new.tap do |t|
+        t.stop = Page::Trip::Stop.new 'Illaweena St (Waterstone)', 'Waterstone, Illaweena St far side of Waterbrooke Crt'
+        t.time = DateTime.parse '2011-11-24 23:17:00'
       end
       route_page = MiniTest::Mock.new
       route_page.expect :code, '130'
