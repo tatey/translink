@@ -12,7 +12,9 @@ module Translink
       timetable_page = Page::Timetable.new(url.to_s).timetable_page date
       timetable_page.route_pages.each do |route_page|
         model_instance = model_class.find_or_add_from_route_page route_page
-        model_instance.add_services_from_trip_pages *route_page.trip_pages
+        route_page.trip_pages.each do |trip_page|
+          model_instance.add_service_from_trip_page trip_page
+        end
       end
     end
   end

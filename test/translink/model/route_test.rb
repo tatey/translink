@@ -14,7 +14,9 @@ class Model::RouteTest < MiniTest::Unit::TestCase
       trip_page = MiniTest::Mock.new
       trip_page.expect :trips, [trip]
       route_model = Model::Route.find_or_add_from_route_page route_page
-      route_model.add_services_from_trip_pages trip_page, trip_page, trip_page
+      route_model.add_service_from_trip_page trip_page
+      route_model.add_service_from_trip_page trip_page
+      route_model.add_service_from_trip_page trip_page
       assert_equal 3, Model::Service.count
       assert_equal 1, Model::Stop.count
     end

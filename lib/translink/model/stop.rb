@@ -9,6 +9,10 @@ module Translink
       
       has n, :services    
       has n, :routes, :through => :services      
+      
+      def self.find_or_add_from_stop stop
+        Stop.first_or_create :name => stop.name, :locality => stop.locality
+      end
     end
   end
 end

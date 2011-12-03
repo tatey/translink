@@ -8,8 +8,8 @@ class CrawlerTest < MiniTest::Unit::TestCase
       @trip_pages = []
     end
 
-    def add_services_from_trip_pages *trip_pages
-      @trip_pages += trip_pages
+    def add_service_from_trip_page trip_pages
+      @trip_pages << trip_pages
     end
 
     def self.find_or_add_from_route_page route_page
@@ -38,6 +38,5 @@ class CrawlerTest < MiniTest::Unit::TestCase
     crawler.model_class = Model
     crawler.crawl Date.today
     assert_equal 6, Model.instance.trip_pages.size
-    assert Model.instance.trip_pages.all? { |trip_page| trip_page.is_a? Page::Trip }
   end
 end
