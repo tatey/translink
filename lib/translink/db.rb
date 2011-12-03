@@ -2,7 +2,7 @@ module Translink
   class DB
     attr_reader :name, :uri
     
-    def initialize uri, &block
+    def initialize uri
       @uri  = uri
       @name = :default
       DataMapper.setup name, uri
