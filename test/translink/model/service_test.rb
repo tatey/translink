@@ -12,7 +12,7 @@ class Model::ServiceTest < MiniTest::Unit::TestCase
   end
   
   def test_build_from_trip
-    DB.new('sqlite::memory:').use do
+    DB.new 'sqlite::memory:' do
       trip    = Trip.new
       service = Model::Service.build_from_trip trip
       assert_equal trip.stop, service.stop

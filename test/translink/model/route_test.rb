@@ -2,7 +2,7 @@ require 'helper'
 
 class Model::RouteTest < MiniTest::Unit::TestCase
   def test_add_services_from_trip_pages
-    DB.new('sqlite::memory:').use do
+    DB.new 'sqlite::memory:' do
       trip = Page::Trip::Trip.new.tap do |t|
         t.stop = Page::Trip::Stop.new 'Illaweena St (Waterstone)', 'Waterstone, Illaweena St far side of Waterbrooke Crt'
         t.time = DateTime.parse '2011-11-24 23:17:00'
@@ -23,7 +23,7 @@ class Model::RouteTest < MiniTest::Unit::TestCase
   end
   
   def test_find_or_add_from_route_page
-    DB.new('sqlite::memory:').use do
+    DB.new 'sqlite::memory:' do
       route_page = MiniTest::Mock.new
       route_page.expect :code, '130'
       route_page.expect :name, 'City Buz 130 Via Sunnybank'
