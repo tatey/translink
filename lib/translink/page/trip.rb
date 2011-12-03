@@ -1,6 +1,9 @@
 module Translink
   module Page
     class Trip
+      Service = Struct.new :stop, :time
+      Stop    = Struct.new :name, :locality
+      
       attr_reader :page, :url
       
       def initialize url
@@ -12,7 +15,9 @@ module Translink
       end
 
       def stops
-        table_rows.search('td:first-child').map { |td| td.text.strip }
+        table_rows.search('td:first-child').map do |td| 
+          Stop.new *td.text.strip.split("\n")
+        end        
       end
       
       def times
