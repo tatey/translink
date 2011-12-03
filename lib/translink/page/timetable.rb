@@ -1,36 +1,17 @@
 module Translink
-  module Page
-    class Timetable
-      attr_reader :page, :url
-      
-      def initialize url, page = nil
-        @url  = URI.parse url
-        @page = page
+  class Page::Timetable < Page
+    def route_pages
+      page.search('table tr td:first-child a').map do |anchor| 
+        Route.new url_from_href(anchor['href'])
       end
-      
-      def page
-        @page ||= Mechanize.new.get url.to_s
-      end
-      
-      def route_pages
-        anchors.map { |anchor| Route.new absolute_url(anchor['href']) }
-      end
-      
-      def timetable_page date
-        form = page.forms[1]        
-        form.field_with(:name => 'TimetableDate').value = date.to_s
-        self.class.new absolute_url(form.action), form.submit
-      end
-      
-    protected
+    end
     
-      def absolute_url path
-        url.scheme + '://' + url.host + path
+    def timetable_page date
+      form = page.forms[1]        
+      form.field_with(:name => 'TimetableDate').value = date.to_s
+      self.class.new(url_from_href(form.action)).tap do |page|
+        page.page = form.submit
       end
-    
-      def anchors
-        page.search 'table tr td:first-child a'
-      end      
     end
   end
 end

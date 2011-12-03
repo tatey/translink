@@ -1,10 +1,6 @@
 require 'helper'
 
 class Page::TripTest < MiniTest::Unit::TestCase
-  def test_initialize    
-    assert_equal 'http://localhost', Page::Trip.new('http://localhost').url.to_s
-  end
-  
   def test_date
     stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/trip-details/281889?timetableDate=2011-11-14').
       to_return(:status => 200, :body => fixture('verbatim/trip.html'), :headers => {'Content-Type' => 'text/html'})

@@ -1,10 +1,6 @@
 require 'helper'
 
 class Page::TimetableTest < MiniTest::Unit::TestCase
-  def test_initialize 
-    assert_equal 'http://localhost', Page::Timetable.new('http://localhost').url.to_s
-  end
-  
   def test_page
     stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/bus-timetables').
       to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})          
