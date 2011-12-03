@@ -8,7 +8,7 @@ module Translink
       property :locality, String
       
       has n, :services    
-      has n, :routes, :through => :services
+      has n, :routes, :through => :services      
     end
   end
 end

@@ -15,7 +15,7 @@ module Translink
         trip_pages.each do |trip_page|
           trip_page.trips.each do |trip|     
             services.new.tap do |service|
-              service.stop = Stop.new :name => trip.stop.name, :locality => trip.stop.locality
+              service.stop = Stop.first_or_create :name => trip.stop.name, :locality => trip.stop.locality
               service.time = trip.time
             end.save
           end
