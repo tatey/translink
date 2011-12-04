@@ -1,6 +1,6 @@
 module Translink
   class CLI
-    RUNNABLE = [:help, :import]
+    RUNNABLE = ['help', 'import']
     
     attr_accessor :crawler_class, :out, :pwd
     
@@ -12,7 +12,7 @@ module Translink
 
     def run line
       command, input = line.split /\s/, 2
-      if command && RUNNABLE.include?(command.to_sym)
+      if RUNNABLE.include? command
         send command, input
       else
         help nil
