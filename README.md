@@ -1,7 +1,3 @@
-# NOTE
-
-This project is a work-in-progress. Use with caution. It may be available as a gem in the future.
-
 # Translink
 
 [Translink](http://translink.com.au/) (Organisation) coordinates public transport operations in 
@@ -14,8 +10,12 @@ data is protected by [copyright](http://translink.com.au/site-information/legal/
 
 ## Usage
 
-Import all bus stops, routes and services for Thursday, 24 November 2011 saving them into a 
-SQLite database named "2011-11-24.sqlite3" in the current working directory.
+First install all the required dependancies.
+
+    $ bundle install
+
+Then import all bus stops, routes and services for Thursday, 24 November 2011 saving 
+them into a SQLite database named "2011-11-24.sqlite3" in the current working directory.
 
     $ translink import 2011-11-24
     
@@ -26,10 +26,19 @@ Change the path to the SQLite database.
     $ translink import 2011-11-24 --uri="sqlite:///Users/Tate/Downloads/translink.sqlite3"
 
 Prefer not to use SQLite? Translink is compatible with any adapter supported by
-[DataMapper](http://datamapper.org/). Specify a URI to your favourite database server.
+[DataMapper](http://datamapper.org/). Translink uses Bundler for managing dependancies.
+Append your favourite adapter to the Gemfile.
+
+    gem 'dm-postgres-adapter'
+
+Install the new adapter.
+
+    $ bundle install
+
+Specify a URI to the database server.
 
     $ translink import 2011-11-24 --uri="postgres://user:secret@127.0.0.1/translink"
-    
+        
 ## Schema
 
 ![Class Analysis Diagram](https://github.com/tatey/translink/raw/master/doc/schema.png)
