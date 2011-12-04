@@ -11,8 +11,7 @@ module Translink
     end
 
     def run line
-      command = line.slice! /^\S+/
-      input   = line.strip
+      command, input = line.split /\s/, 2
       if command && RUNNABLE.include?(command.to_sym)
         send command, input
       else
