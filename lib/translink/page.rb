@@ -1,13 +1,16 @@
 module Translink
   class Page
-    attr_accessor :page, :url
+    USER_AGENT = "Translink/#{VERSION} Ruby/#{RUBY_VERSION} (https://github.com/tatey/translink)"
+    
+    attr_accessor :agent, :page, :url
     
     def initialize url
-      @url = URI.parse url
+      @agent = Mechanize.new.tap { |mechanize| mechanize.user_agent = USER_AGENT }
+      @url   = URI.parse url
     end
         
     def page
-      @page ||= Mechanize.new.get url.to_s
+      @page ||= agent.get url.to_s
     end
     
   protected

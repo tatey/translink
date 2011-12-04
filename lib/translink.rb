@@ -5,6 +5,7 @@ require 'logger'
 require 'mechanize'
 require 'uri'
 
+require 'translink/version'
 require 'translink/cli'
 require 'translink/crawler'
 require 'translink/db'
