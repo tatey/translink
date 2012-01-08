@@ -14,12 +14,14 @@ data is protected by [copyright](http://translink.com.au/site-information/legal/
 
 First install all the required dependancies.
 
+    $ git clone git://github.com/tatey/translink.git
+    $ cd translink
     $ bundle install
 
 Then import all bus stops, routes and services for Thursday, 24 November 2011 saving 
 them into a SQLite database named "2011-11-24.sqlite3" in the current working directory.
 
-    $ translink import 2011-11-24
+    $ ./bin/translink import 2011-11-24
     
 ### Options
 
