@@ -7,4 +7,5 @@ gem 'mechanize'
 
 group :test do
   gem 'webmock'
+  gem 'rake'
 end
