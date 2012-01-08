@@ -6,6 +6,6 @@ gem 'dm-sqlite-adapter'
 gem 'mechanize'
 
 group :test do
-  gem 'webmock'
   gem 'rake'
+  gem 'webmock'
 end

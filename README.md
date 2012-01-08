@@ -1,5 +1,7 @@
 # Translink
 
+[![Build Status](https://secure.travis-ci.org/tatey/translink.png)](http://travis-ci.org/tatey/translink)
+
 [Translink](http://translink.com.au/) (Organisation) coordinates public transport operations in 
 Brisbane. Their website has an abundance of data with no easy way for a developer
 to query it.
