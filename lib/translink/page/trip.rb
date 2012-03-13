@@ -1,7 +1,7 @@
 module Translink
   class Page::Trip < Page
     Trip = Struct.new :stop, :time
-    Stop = Struct.new :name, :locality
+    Stop = Struct.new :name, :summary
 
     def date
       Date.parse page.search('div#contentleftCol p span').text
