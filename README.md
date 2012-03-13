@@ -2,12 +2,12 @@
 
 [![Build Status](https://secure.travis-ci.org/tatey/translink.png)](http://travis-ci.org/tatey/translink)
 
-[Translink](http://translink.com.au/) (Organisation) coordinates public transport operations in 
+[Translink](http://translink.com.au/) (Organisation) coordinates public transport operations in
 Brisbane. Their website has an abundance of data with no easy way for a developer
 to query it.
 
 Translink (Program) imports bus stops, routes and service times into a nicely structured
-database. Data is sourced from the [Translink website](http://translink.com.au/). You should be aware their 
+database. Data is sourced from the [Translink website](http://translink.com.au/). You should be aware their
 data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
 ## Usage
@@ -18,11 +18,11 @@ First install all the required dependancies.
     $ cd translink
     $ bundle install
 
-Then import all bus stops, routes and services for Thursday, 24 November 2011 saving 
+Then import all bus stops, routes and services for Thursday, 24 November 2011 saving
 them into a SQLite database named "2011-11-24.sqlite3" in the current working directory.
 
     $ ./bin/translink import 2011-11-24
-    
+
 ### Options
 
 Change the path to the SQLite database.
@@ -42,7 +42,7 @@ Install the new adapter.
 Specify a URI to the database server.
 
     $ translink import 2011-11-24 --uri="postgres://user:secret@127.0.0.1/translink"
-        
+
 ## Schema
 
 ![Class Analysis Diagram](https://github.com/tatey/translink/raw/master/doc/schema.png)

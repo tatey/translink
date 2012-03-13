@@ -21,7 +21,7 @@ class Model::RouteTest < MiniTest::Unit::TestCase
       assert_equal 1, Model::Stop.count
     end
   end
-  
+
   def test_find_or_add_from_route_page
     DB.new 'sqlite::memory:' do
       route_page = MiniTest::Mock.new
