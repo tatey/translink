@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = 'translink'
 
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 1.9.2'
 
   s.add_runtime_dependency 'dm-core', '~> 1.2.0'
   s.add_runtime_dependency 'dm-migrations', '~> 1.2.0'
