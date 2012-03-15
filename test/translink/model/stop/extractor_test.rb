@@ -97,4 +97,16 @@ class Model::Stop::ExtractorTest < MiniTest::Unit::TestCase
   def test_locality_near
     assert_equal 'near', stub_extractor(:summary => 'Allamanda, Old Northern Rd (Near Allamanda Cres)').locality
   end
+
+  def test_street1_without_locality
+    assert_equal 'Oyster Cove - Hail And Ride', stub_extractor(:name => 'Oyster Cove - Hail And Ride').street1
+  end
+
+  def test_street2_without_locality
+    assert_nil stub_extractor(:name => 'Oyster Cove - Hail And Ride').street2
+  end
+
+  def test_locality_without_locality
+    assert_nil stub_extractor(:name => 'Oyster Cove - Hail And Ride').locality
+  end
 end

@@ -1,6 +1,16 @@
 module Translink
   module Model
     class Stop::Extractor
+      module Nil
+        def gsub *args
+          self
+        end
+
+        def strip
+          self
+        end
+      end
+
       REGEXES = {
         /[\s\(]opposite approaching/i => 'opposite_approaching',
         /[\s\(]opposite far side of/i => 'opposite_far_side',
@@ -45,7 +55,8 @@ module Translink
       end
 
       def segments
-        summary_or_name.split regex
+        results = summary_or_name.split regex
+        results.size == 2 ? results : [summary_or_name, nil.extend(Nil)]
       end
 
       def summary_or_name
