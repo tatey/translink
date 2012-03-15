@@ -1,4 +1,3 @@
-require 'bundler/setup'
 require 'dm-core'
 require 'dm-migrations'
 require 'mechanize'
