@@ -29,6 +29,16 @@ Change the path to the SQLite database.
 
 ![Class Analysis Diagram](https://github.com/tatey/translink/raw/master/doc/schema.png)
 
+## Contributing
+
+1. Fork it
+2. Install dependancies (`bundle install`)
+3. Create your feature branch (`git checkout -b my-new-feature`)
+4. Run tests (`rake test`)
+5. Commit your changes (`git commit -am 'Added some feature'`)
+6. Push to the branch (`git push origin my-new-feature`)
+7. Create new Pull Request
+
 ## Copyright
 
 Copyright © 2011 Tate Johnson. Released under the MIT license. See LICENSE.
