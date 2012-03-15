@@ -1,6 +1,6 @@
 module Translink
   class CLI
-    RUNNABLE = ['extract', 'help', 'import']
+    RUNNABLE = ['extract', 'help', 'scrape']
 
     attr_accessor :out, :pwd, :__crawler__, :__stop__
 
@@ -36,7 +36,7 @@ module Translink
       log 'help'
     end
 
-    def import input
+    def scrape input
       return help nil unless input =~ /^(\d{4}-\d{2}-\d{2})(\s+--uri="?(.+)"?)?$/
       date = Date.parse $1
       uri  = $3 || 'sqlite://' + File.join(pwd, "#{date}.sqlite3")
