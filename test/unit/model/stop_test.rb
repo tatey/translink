@@ -11,6 +11,16 @@ class Model::StopTest < MiniTest::Unit::TestCase
     end
   end
 
+  def test_all
+    DB.new 'sqlite::memory:' do
+      Model::Stop.create :name => 'Adelaide St'
+      Model::Stop.create :name => 'Queen St'
+      Model::Stop.create :name => 'Elizabeth St'
+      stops = Model::Stop.all
+      assert_equal ['Adelaide St', 'Queen St', 'Elizabeth St'], stops.map(&:name)
+    end
+  end
+
   def test_extract!
     stop               = Model::Stop.new
     extractor_instance = MiniTest::Mock.new.expect :extract!, stop

@@ -1,11 +1,12 @@
 module Translink
   class CLI
-    RUNNABLE = ['help', 'import']
+    RUNNABLE = ['extract', 'help', 'import']
 
-    attr_accessor :out, :pwd, :__crawler__
+    attr_accessor :out, :pwd, :__crawler__, :__stop__
 
     def initialize pwd
       self.__crawler__ = Translink::Crawler
+      self.__stop__    = Model::Stop
       self.out         = $stdout
       self.pwd         = pwd
     end
@@ -20,6 +21,16 @@ module Translink
     end
 
   protected
+
+    def extract input
+      return help nil unless input =~ /[A-Za-z]:\/\/.+/
+      DB.new input do
+        __stop__.all.each do |stop|
+          stop.extract!
+          stop.save!
+        end
+      end
+    end
 
     def help input
       log 'help'

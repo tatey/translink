@@ -36,13 +36,29 @@ class CLITtest < MiniTest::Unit::TestCase
     assert_match /help/, @out.string
   end
 
+  def test_execute_extract_command_with_invalid_uri
+    @cli.run 'extract invalid'
+    assert_match /help/, @out.string
+  end
+
+  def test_execute_extract_command_with_valid_uri
+    file          = File.join TMPDIR, "test_extract_#{Time.now.to_i}.sqlite3"
+    stop_instance = MiniTest::Mock.new.expect(:extract!, nil).expect(:save!, true)
+    stop_class    = MiniTest::Mock.new.expect :all, [stop_instance]
+    @cli.__stop__ = stop_class
+    @cli.run "extract sqlite://#{file}"
+    assert stop_instance.verify
+    assert stop_class.verify
+    assert File.exists?(file), 'Expected file to exist.'
+  end
+
   def test_execute_help_command
     @cli.run 'help'
     assert_match /help/, @out.string
   end
 
   def test_execute_import_command_with_uri
-    file = File.join TMPDIR, 'test.sqlite3'
+    file = File.join TMPDIR, "test_import_#{Time.now.to_i}.sqlite3"
     refute File.exists?(file), 'Expected file not to exist.'
     @cli.run "import 2011-11-27 --uri=sqlite://#{file}"
     assert File.exists?(file), 'Expected file to exist.'
