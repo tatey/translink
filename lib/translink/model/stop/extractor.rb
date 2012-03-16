@@ -37,7 +37,7 @@ module Translink
       def street1
         segment = segments.first
         segment =~ /,\s*(.+)/
-        ($1 || segment).strip
+        ($1 || segment).gsub(/\d-\d|\d/, '').strip
       end
 
       def street2

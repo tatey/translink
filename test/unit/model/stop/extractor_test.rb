@@ -98,6 +98,12 @@ class Model::Stop::ExtractorTest < MiniTest::Unit::TestCase
     assert_equal 'near', stub_extractor(:summary => 'Allamanda, Old Northern Rd (Near Allamanda Cres)').locality
   end
 
+  def test_street1_stips_stop_numbers
+    assert_equal 'Woogaroo St', stub_extractor(:summary => '167 Woogaroo St (far side of Roxwell St)').street1
+    assert_equal 'Serviceton St', stub_extractor(:summary => 'Stop 78, 79 Serviceton St (approaching Viola St)').street1
+    assert_equal 'Glenala St', stub_extractor(:summary => 'Stop 71, 19-21 Glenala St (approaching Bampo St)').street1
+  end
+
   def test_street1_without_locality
     assert_equal 'Oyster Cove - Hail And Ride', stub_extractor(:name => 'Oyster Cove - Hail And Ride').street1
   end
