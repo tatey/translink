@@ -16,14 +16,25 @@ First install.
 
     $ [sudo] gem install translink
 
-Then scrape all bus stops, routes and services for Thursday, 24 November 2011 saving
+### Scrape
+
+Scrape all bus stops, routes and services for Thursday, 24 November 2011 saving
 them into a SQLite database named "2011-11-24.sqlite3" in the current working directory.
 
     $ translink scrape 2011-11-24
 
 Change the path to the SQLite database.
 
-    $ translink scrape 2011-11-24 --uri="sqlite:///Users/Tate/Downloads/translink.sqlite3"
+    $ translink scrape 2011-11-24 --uri=sqlite:///Users/Tate/Downloads/translink.sqlite3
+
+### Extract
+
+Extract street1, street2 and the locality of each bus stop from the name and summary. Strips
+white space and numbers.
+
+    $ translink extract sqlite:///Users/Tate/Downloads/translink.sqlite3
+
+Not all bus stops have a locality.
 
 ## Schema
 
