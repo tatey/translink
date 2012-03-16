@@ -2,7 +2,7 @@ require 'helper'
 
 class Model::StopTest < MiniTest::Unit::TestCase
   def test_find_or_add_from_stop
-    DB.new 'sqlite::memory:' do
+    DB.context 'sqlite::memory:', :migrate => true do
       stop = MiniTest::Mock.new
       stop.expect :name, 'Illaweena St (Waterstone)'
       stop.expect :summary, 'Waterstone, Illaweena St far side of Waterbrooke Crt'
@@ -12,7 +12,7 @@ class Model::StopTest < MiniTest::Unit::TestCase
   end
 
   def test_all
-    DB.new 'sqlite::memory:' do
+    DB.context 'sqlite::memory:', :migrate => true do
       Model::Stop.create :name => 'Adelaide St'
       Model::Stop.create :name => 'Queen St'
       Model::Stop.create :name => 'Elizabeth St'

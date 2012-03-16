@@ -5,14 +5,14 @@ class Model::ServiceTest < MiniTest::Unit::TestCase
     def stop
       Model::Stop.first_or_create :name => 'Stop'
     end
-    
+
     def time
       DateTime.parse '2011-12-03 18:24:00'
     end
   end
-  
+
   def test_build_from_trip
-    DB.new 'sqlite::memory:' do
+    DB.context 'sqlite::memory:', :migrate => true do
       trip    = Trip.new
       service = Model::Service.build_from_trip trip
       assert_equal trip.stop, service.stop

@@ -42,14 +42,12 @@ class CLITtest < MiniTest::Unit::TestCase
   end
 
   def test_execute_extract_command_with_valid_uri
-    file          = File.join TMPDIR, "test_extract_#{Time.now.to_i}.sqlite3"
     stop_instance = MiniTest::Mock.new.expect(:extract!, nil).expect(:save!, true)
     stop_class    = MiniTest::Mock.new.expect :all, [stop_instance]
     @cli.__stop__ = stop_class
-    @cli.run "extract sqlite://#{file}"
+    @cli.run "extract sqlite::memory:"
     assert stop_instance.verify
     assert stop_class.verify
-    assert File.exists?(file), 'Expected file to exist.'
   end
 
   def test_execute_help_command

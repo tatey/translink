@@ -1,20 +1,12 @@
 module Translink
-  class DB
-    attr_reader :name, :uri
-    
-    def initialize uri, &block
-      @uri  = uri
-      @name = :default
-      DataMapper.setup name, uri
-      DataMapper.repository name do
+  module DB
+    def self.context uri, options = {}
+      DataMapper.setup :default, uri
+      DataMapper.repository :default do
         DataMapper.finalize
-        DataMapper.auto_migrate!
+        DataMapper.auto_migrate! if options[:migrate]
+        yield if block_given?
       end
-      use &block if block
-    end
-    
-    def use &block
-      DataMapper.repository(name) { block.call }
     end
   end
 end

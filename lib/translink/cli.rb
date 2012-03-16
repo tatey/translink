@@ -23,8 +23,8 @@ module Translink
   protected
 
     def extract input
-      return help nil unless input =~ /[A-Za-z]:\/\/.+/
-      DB.new input do
+      return help nil unless input =~ /[A-Za-z]:.+/
+      DB.context input do
         __stop__.all.each do |stop|
           stop.extract!
           stop.save!
@@ -40,7 +40,7 @@ module Translink
       return help nil unless input =~ /^(\d{4}-\d{2}-\d{2})(\s+--uri="?(.+)"?)?$/
       date = Date.parse $1
       uri  = $3 || 'sqlite://' + File.join(pwd, "#{date}.sqlite3")
-      DB.new uri do
+      DB.context uri, :migrate => true do
         crawler = __crawler__.new 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables'
         crawler.crawl date
       end
