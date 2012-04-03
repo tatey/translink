@@ -6,9 +6,6 @@ module Translink
       property :id,       Serial
       property :name,     String
       property :summary,  String
-      property :street1,  String
-      property :street2,  String
-      property :locality, String
 
       has n, :services
       has n, :routes, :through => :services
