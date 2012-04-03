@@ -20,18 +20,4 @@ class Model::StopTest < MiniTest::Unit::TestCase
       assert_equal ['Adelaide St', 'Queen St', 'Elizabeth St'], stops.map(&:name)
     end
   end
-
-  def test_extract!
-    stop               = Model::Stop.new
-    extractor_instance = MiniTest::Mock.new.expect :extract!, stop
-    extractor_class    = MiniTest::Mock.new.expect :new, extractor_instance, [stop]
-    stop.__extractor__ = extractor_class
-    stop.extract!
-    assert extractor_instance.verify
-    assert extractor_class.verify
-  end
-
-  def test__extractor__
-    assert_equal Model::Stop::Extractor, Model::Stop.new.__extractor__
-  end
 end

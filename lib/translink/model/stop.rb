@@ -13,18 +13,8 @@ module Translink
       has n, :services
       has n, :routes, :through => :services
 
-      attr_accessor :__extractor__
-
       def self.find_or_add_from_stop stop
         Stop.first_or_create :name => stop.name, :summary => stop.summary
-      end
-
-      def extract!
-        __extractor__.new(self).extract!
-      end
-
-      def __extractor__
-        @__extractor__ ||= Extractor
       end
     end
   end
