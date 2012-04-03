@@ -23,7 +23,11 @@ module Translink
   protected
 
     def help input
-      log 'help'
+      log 'translink scrape <DATE> [URI]'
+      log ''
+      log 'Examples:'
+      log '    translink scrape 2011-11-24'
+      log '    translink scrape 2011-11-24 sqlite://~/Desktop/2011-11-24.sqlite3'
     end
 
     def scrape input
