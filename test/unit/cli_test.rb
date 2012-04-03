@@ -28,17 +28,17 @@ class CLITtest < MiniTest::Unit::TestCase
 
   def test_blank_executes_help_command
     @cli.run ''
-    assert_match /help/, @out.string
+    assert_includes @out.string, 'Usage'
   end
 
   def test_unrecognised_command_executes_help_command
     @cli.run 'unknown'
-    assert_match /help/, @out.string
+    assert_includes @out.string, 'Usage'
   end
 
   def test_execute_help_command
     @cli.run 'help'
-    assert_match /help/, @out.string
+    assert_includes @out.string, 'Usage'
   end
 
   def test_execute_scrape_command_with_uri
@@ -57,6 +57,6 @@ class CLITtest < MiniTest::Unit::TestCase
 
   def test_execute_scrape_command_without_date_executes_help_command
     @cli.run 'scrape'
-    assert_match /help/, @out.string
+    assert_includes @out.string, 'Usage'
   end
 end
