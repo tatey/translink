@@ -51,7 +51,7 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
-			<string>{{213.29623, 311.6265}, {15, 14}}</string>
+			<string>{{213.30376, 311.70667}, {15, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -110,7 +110,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{185.63945, 308.30548}, {16, 14}}</string>
+			<string>{{185.64999, 308.36111}, {16, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -177,8 +177,8 @@
 			<integer>53</integer>
 			<key>Points</key>
 			<array>
-				<string>{177.5, 326.97943}</string>
-				<string>{234, 326.95386}</string>
+				<string>{177.5, 327.02048}</string>
+				<string>{234, 327.04596}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -354,7 +354,7 @@
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{87, 271}, {90, 14}}</string>
+					<string>{{87, 292}, {90, 14}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -390,7 +390,7 @@
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{87, 285}, {90, 84}}</string>
+					<string>{{87, 306}, {90, 42}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>FitText</key>
@@ -421,10 +421,7 @@
 
 \f0\fs24 \cf0 id\
 name\
-summary\
-street1\
-street2\
-locality}</string>
+summary}</string>
 						<key>VerticalPad</key>
 						<integer>0</integer>
 					</dict>
@@ -673,7 +670,7 @@ translink_id}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2012-03-13 11:33:14 +0000</string>
+	<string>2012-04-03 12:16:15 +0000</string>
 	<key>Modifier</key>
 	<string>Tate Johnson</string>
 	<key>NotesVisible</key>
