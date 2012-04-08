@@ -8,6 +8,7 @@ module Translink
       property :id,           Serial
       property :code,         String
       property :name,         String
+      property :direction,    String
       property :translink_id, Integer
 
       has n, :services
@@ -23,6 +24,7 @@ module Translink
       def self.find_or_add_from_route_page route_page
         first_or_create :code         => route_page.code,
                         :name         => route_page.name,
+                        :direction    => route_page.direction,
                         :translink_id => route_page.translink_id
       end
     end
