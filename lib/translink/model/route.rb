@@ -2,17 +2,17 @@ module Translink
   module Model
     class Route
       include DataMapper::Resource
-      
+
       storage_names[:default] = 'routes'
 
       property :id,           Serial
       property :code,         String
       property :name,         String
       property :translink_id, Integer
-      
+
       has n, :services
       has n, :stops, :through => :services
-      
+
       def add_service_from_trip_page trip_page
         trip_page.trips.each do |trip|
           services << Service.build_from_trip(trip)
