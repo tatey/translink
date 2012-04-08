@@ -23,11 +23,12 @@ module Translink
   protected
 
     def help input
+      tomorrow = Date.today + 1
       log 'Usage: translink scrape <DATE> [URI]'
       log ''
       log 'Examples:'
-      log '    translink scrape 2011-11-24'
-      log '    translink scrape 2011-11-24 sqlite://~/Desktop/2011-11-24.sqlite3'
+      log "    translink scrape #{tomorrow}"
+      log "    translink scrape #{tomorrow} sqlite://~/Desktop/#{tomorrow}.sqlite3"
     end
 
     def scrape input
