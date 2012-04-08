@@ -9,7 +9,7 @@ module Translink
     end
           
     def direction
-      page.search('div#contentleftCol div.content p').text.match(/(\S+)$/).captures.first
+      page.search('div#contentleftCol div.content p').text.downcase.match(/(\S+)$/).captures.first
     end
     
     def name
