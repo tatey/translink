@@ -3,6 +3,8 @@ module Translink
     class Stop
       include DataMapper::Resource
 
+      storage_names[:default] = 'stops'
+
       property :id,       Serial
       property :name,     String
       property :summary,  String

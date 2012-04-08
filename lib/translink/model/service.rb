@@ -3,6 +3,8 @@ module Translink
     class Service
       include DataMapper::Resource
       
+      storage_names[:default] = 'services'
+
       property :id,   Serial
       property :time, DateTime
       

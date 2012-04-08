@@ -3,6 +3,8 @@ module Translink
     class Route
       include DataMapper::Resource
       
+      storage_names[:default] = 'routes'
+
       property :id,           Serial
       property :code,         String
       property :name,         String
