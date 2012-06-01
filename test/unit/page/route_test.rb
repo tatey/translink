@@ -1,41 +1,28 @@
 require 'helper'
 
 class Page::RouteTest < MiniTest::Unit::TestCase
-  def test_code
-    stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').
-      to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    assert_equal '130', Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').code
-  end
-
   def test_date
-    stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-04').
       to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    assert_equal Date.parse('Monday 14 November 2011'), Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').date
+    assert_equal DateTime.parse('1/06/2012 12:00:00 AM'), Page::Route.new('http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-04', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson').date
   end
 
-  def test_direction
-    stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').
-      to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    assert_equal 'inbound', Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').direction
+  def test_long_name
+    route = Page::Route.new('http://local', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson')
+    assert_equal 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson', route.long_name
   end
 
-  def test_name
-    stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').
+  def test_short_name
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-04').
       to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    assert_equal 'City Buz 130 Via Sunnybank', Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').name
-  end
-
-  def test_translink_id
-    stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').
-      to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    assert_equal '1925', Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').translink_id
+    assert_equal '130', Page::Route.new('http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-04', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson').short_name
   end
 
   def test_trip_pages
-    stub_request(:get, 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-04').
       to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    trip_pages = Page::Route.new('http://jp.translink.com.au/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&direction=Inbound&routeCode=130').trip_pages
-    assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/trip-details/281889?timetableDate=2011-11-14', trip_pages.first.url.to_s
-    assert_equal 'http://jp.translink.com.au/travel-information/services-and-timetables/trip-details/252074?timetableDate=2011-11-14', trip_pages.last.url.to_s
+    trip_pages = Page::Route.new('http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-04', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson').trip_pages
+    assert_equal 'http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8550/1712196/2012-05-31', trip_pages.first.url.to_s
+    assert_equal 'http://jp.translink.com.au/travel-information/network-information/service-information/inbound/8552/1721391/2012-06-02', trip_pages.last.url.to_s
   end
 end
