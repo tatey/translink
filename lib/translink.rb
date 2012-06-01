@@ -5,7 +5,6 @@ require 'uri'
 
 require 'translink/version'
 require 'translink/cli'
-require 'translink/code'
 require 'translink/crawler'
 require 'translink/db'
 require 'translink/model/route'

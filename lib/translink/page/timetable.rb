@@ -1,11 +1,5 @@
 module Translink
   class Page::Timetable < Page
-    attr_accessor :code_class
-
-    def code_class
-      @code_class ||= Code
-    end
-
     # Builds an array of routes.
     #
     # @return [Array(Route)]
