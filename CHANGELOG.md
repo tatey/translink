@@ -2,6 +2,7 @@
 
 ## Current
 
+* Compatibility with changed website (2012-05-29)
 * Store route's direction (Eg: inbound).
 * Changed table names (Eg: translink_model_stops -> stops).
 * Removed street1, street2 and locality columns from stops. Columns were not being used.
