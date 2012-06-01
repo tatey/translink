@@ -2,10 +2,8 @@
 
 ## Current
 
-* Compatibility with changed website (2012-05-29)
-* Store route's direction (Eg: inbound).
-* Changed table names (Eg: translink_model_stops -> stops).
-* Removed street1, street2 and locality columns from stops. Columns were not being used.
+* Compatibility with Translink website (2012-05-29).
+* Changed schema to conform with Google Transit feed specification.
 * Help command always gives working example.
 
 ## 2012-03-15 / v0.0.1
