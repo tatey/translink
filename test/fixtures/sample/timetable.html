@@ -1,33 +1,128 @@
-
 <!DOCTYPE html>
 <html lang="en-au">
-<head><meta name="google-site-verification" content="nNhS0Na_38DlBjVO22yfHnekgn6xyusSgs0wqs4yDQ8" />
-<link rel="stylesheet" href="/utilities/css/common.css_v1.7.7.139" type="text/css" media="screen, print" />
-<!--[if lte IE 8]>
-<style type="text/css">
-#container-shadow {
-zoom: 1;
-background-color: #FFF;
--ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=5,MakeShadow=true,ShadowOpacity=0.30)";
-padding: 0 0 0 10px;
-}
-.megamenu { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#efeded', endColorstr='#d9d3d4'); }
-.searchform .searchbutton { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e9e9e', endColorstr='#454545'); }
-.greyButton { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#555555'); }
-</style>
-<![endif]-->
-<!--[if lte IE 7]> <link href="/utilities/css/styles-ie-lte7.css_v1.7.7.139" media="screen" rel="stylesheet" type="text/css" ><![endif]-->
-<!--[if lte IE 6]> <link href="/utilities/css/styles-ie-lte6.css_v1.7.7.139" media="screen" rel="stylesheet" type="text/css" ><![endif]-->
-<!--[if gte IE 9]> <style type="text/css">.blueButton, .greyButton, .searchform .searchbutton { filter: none; }</style><![endif]-->
-<link rel="stylesheet" href="/utilities/css/print.css_v1.7.7.139" type="text/css" media="print" />
+<head>
+<title>All bus timetables | TransLink</title>
+<meta name="description" content="TransLink is your one stop for public transport information, and coordinates and integrates public transport services in South East Queensland." />
+<meta name="keywords" content="TransLink,public,transport,information,bus,train,ferry,timetables,maps,events,service updates,announcements,go card,fares,tickets" />
+<meta name="author" content="TransLink Transit Authority" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="/utilities/css/mobile-v2.1.2.28" type="text/css" />
+ <script src="/utilities/common-javascript-v2.1.2.28" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript">
+window.journeyPlannerHref = "/travel-information/journey-planner";
+window.myLinksHref = "/my-links";
+window.timetablesHref = "/travel-information/network-information/timetables";
+window.serviceStatusHref = "http://mobile.translink.com.au/travel-information/service-updates/current-status";
+window.goCardHref = "/tickets-and-fares/go-card/locations";
+window.stopsAndStationsHref = "/travel-information/network-information/stops-and-stations";
+window.mainSiteHref = "http://mobile.translink.com.au/";
+</script>
+</head>
+<body>
+<div id="header">
+<div class="column-2">
+<a href="http://mobile.translink.com.au/" title="Translink - Mobile Homepage" id="translink-logo">
+<img src="/Content/Images/translink-logo-reversed.png" alt="TransLink" style="width: 153px; height: 29px;" id="logo-image" />
+</a>
+</div>
+<div class="column-2 right-align" id="navBarIcons">
+<a href="http://mobile.translink.com.au/"><img src="/Content/images/mobile/home-icon.png" style="width: 32px; height: 32px;" alt="Home" /></a>
+<a href="http://mobile.translink.com.au/site-information/menu" id="SiteNavButton"><img src="/Content/images/mobile/menu-icon.png" style="width: 32px; height: 32px;" alt="Site menu" /></a>
+</div>
+</div>
+<div class="content heading-bar">
+<h1>All bus timetables</h1>
+<div class="underline">&nbsp;</div>
+</div>
 
-<script src="/utilities/common-javascript_v1.7.7.139" type="text/javascript" charset="utf-8"></script>
+
+
+
+<div class="useful">
+<form action="/travel-information/network-information/timetables" method="post"> <div>
+<span class="input-group">
+<label for="RouteCode">Route code</label><br />
+<input id="RouteCode" name="RouteCode" type="text" value="" />
+</span>
+<span class="input-group">
+<label for="Date">Date</label><br />
+<select class="dateSelection" id="Date" name="Date"><option selected="selected" value="1/06/2012 12:00:00 AM">Today (Fri)</option>
+<option value="2/06/2012 12:00:00 AM">Sat 2 Jun</option>
+<option value="3/06/2012 12:00:00 AM">Sun 3 Jun</option>
+<option value="4/06/2012 12:00:00 AM">Mon 4 Jun</option>
+<option value="5/06/2012 12:00:00 AM">Tue 5 Jun</option>
+<option value="6/06/2012 12:00:00 AM">Wed 6 Jun</option>
+<option value="7/06/2012 12:00:00 AM">Thu 7 Jun</option>
+<option value="8/06/2012 12:00:00 AM">Fri 8 Jun</option>
+<option value="9/06/2012 12:00:00 AM">Sat 9 Jun</option>
+<option value="10/06/2012 12:00:00 AM">Sun 10 Jun</option>
+<option value="11/06/2012 12:00:00 AM">Mon 11 Jun</option>
+<option value="12/06/2012 12:00:00 AM">Tue 12 Jun</option>
+<option value="13/06/2012 12:00:00 AM">Wed 13 Jun</option>
+<option value="14/06/2012 12:00:00 AM">Thu 14 Jun</option>
+<option value="15/06/2012 12:00:00 AM">Fri 15 Jun</option>
+<option value="16/06/2012 12:00:00 AM">Sat 16 Jun</option>
+<option value="17/06/2012 12:00:00 AM">Sun 17 Jun</option>
+<option value="18/06/2012 12:00:00 AM">Mon 18 Jun</option>
+<option value="19/06/2012 12:00:00 AM">Tue 19 Jun</option>
+<option value="20/06/2012 12:00:00 AM">Wed 20 Jun</option>
+<option value="21/06/2012 12:00:00 AM">Thu 21 Jun</option>
+<option value="22/06/2012 12:00:00 AM">Fri 22 Jun</option>
+<option value="23/06/2012 12:00:00 AM">Sat 23 Jun</option>
+<option value="24/06/2012 12:00:00 AM">Sun 24 Jun</option>
+<option value="25/06/2012 12:00:00 AM">Mon 25 Jun</option>
+<option value="26/06/2012 12:00:00 AM">Tue 26 Jun</option>
+<option value="27/06/2012 12:00:00 AM">Wed 27 Jun</option>
+<option value="28/06/2012 12:00:00 AM">Thu 28 Jun</option>
+<option value="29/06/2012 12:00:00 AM">Fri 29 Jun</option>
+<option value="30/06/2012 12:00:00 AM">Sat 30 Jun</option>
+</select>
+</span>
+</div>
+ <div>
+<fieldset>
+<legend>Service types</legend>
+<span class="single-line"><input checked="checked" id="ServiceModeRegular" name="ServiceTypes" tabindex="13" type="checkbox" value="Regular" /> <label for="ServiceModeRegular">Regular</label></span>
+<span class="single-line"><input checked="checked" id="ServiceModeExpress" name="ServiceTypes" tabindex="14" type="checkbox" value="Express" /> <label for="ServiceModeExpress">Express</label></span>
+<span class="single-line"><input checked="checked" id="ServiceModeNightLink" name="ServiceTypes" tabindex="15" type="checkbox" value="NightLink" /> <label for="ServiceModeNightLink">NightLink</label></span>
+<span class="single-line"><input id="ServiceModeSchool" name="ServiceTypes" tabindex="16" type="checkbox" value="School" /> <label for="ServiceModeSchool">School</label></span>
+</fieldset>
+</div>
+ <div class="right-align">
+<input type="submit" value="Search" class="action-button" />
+</div>
+</form></div> <div class="content">
+ <p>Click on a bus route name below to see today&rsquo;s timetable.</p>
+ </div>
+<table class="content-table">
+<caption class="access">Timetable search results</caption>
+<thead>
+<tr>
+ <th>Route code</th>
+ <th>Route name</th>
+ </tr>
+</thead>
+<tbody>
+ <tr>
+<td>130</td>
+<td><a href="/travel-information/network-information/buses/130">City, Griffith Uni, Sunnybank Hills, Algester, Parkinson</a></td>
+</tr>
+ </tbody>
+</table>
+<div id="footer">
+<p><a href="http://mobile.translink.com.au/utils/goto/context/desktop">View standard site</a></p>
+<p>&copy; TransLink Transit Authority 2012</p>
+<p><a href="http://mobile.translink.com.au/site-information/languages">Languages</a> | <a href="http://mobile.translink.com.au/site-information/legal">Legal stuff</a></p>
+<a href="http://www.qld.gov.au/" id="qglogo"><img src="/Content/Images/qld-gov-logo-inline.png" alt="Queensland Government" style="width: 234px; height: 40px;" /></a>
+<p style="color: #999;">v2.1.2.28</p>
+</div>
 
 <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-18464408-1']);
 _gaq.push(['_setDomainName', '.translink.com.au']);
-_gaq.push(['_trackPageview', '/travel-information/services-and-timetables/buses/bus-timetables']);
+_gaq.push(['_trackPageview', '/travel-information/network-information/buses/all-timetables']);
 (function () {
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -35,534 +130,5 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 </script>
 
-<title>
-	Bus timetables | TransLink
-</title><meta name="description" content="TransLink is your one stop for public transport information, and coordinates and integrates public transport services in South East Queensland." /><meta name="keywords" content="TransLink,public,transport,information,bus,train,ferry,timetables,maps,events,service updates,announcements,go card,fares,tickets" /><meta name="author" content="TransLink Transit Authority" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<!-- Data: 8 November, 2011 -->
-</head>
-<body>
-<ul class="access">
-<li><a href="#navigation-shortcut" tabindex="0">Skip to site navigation</a></li>
-<li><a href="#content-shortcut" tabindex="0">Skip to content</a></li>
-<li><a href="#footer-shortcut" tabindex="0">Skip to footer</a></li>
-</ul>
-<div id="center">
-<div id="container-shadow">
-<div id="container">
-<div id="header">
-<div id="courtesy-nav">
-<ul id="courtesy-links">
-<li><a href="http://translink.com.au/utils/goto/context/mobile" title="View the website on your mobile">Mobile site</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/online" title="go card"><i>go</i> card login</a></li>
-<li><a href="http://translink.com.au/site-information/site-map" title="An overview of the entire TransLink website">Site map</a></li>
-<li class="last"><a href="http://translink.com.au/site-information/contact-us-and-help" title="Call us on 13 12 30, e-mail us, see us in person, follow us on Twitter, or send us a letter.">Contact us &amp; help</a></li>
-</ul>
-</div>
-<div id="header-content">
-<h1 class="access">TransLink - Integrated public transport for South East Queensland</h1>
-<a href="http://translink.com.au/" title="TransLink"><img src="/Content/Images/logo_topleft_translink.png" alt="TransLink" style="width: 237px; height: 46px;" class="logo" /></a>
-<img src="/Content/Images/tagline.png" alt="Making travel easy" class="tagline" style="height: 46px; width: 206px;" />
-</div>
-<a id="navigation-shortcut" tabindex="0"></a>
-<div id="main-nav" class="clearfix">
-<div id="header-search" class="rightalign">
-<form action="http://translink.com.au/site-information/search/results" method="get" id="search" class="searchform jLabel" name="search">
-<fieldset>
-<legend class="access">Search the TransLink website</legend>
-<p>
-<label for="searchbox" id="searchlabel1">Search site&hellip;</label>
-<input type="text" name="query" id="searchbox" value="" class="searchfield" />
-<input type="submit" value="Search" class="searchbutton" />
-</p>
-</fieldset>
-</form>
-</div>
-<ul class="textShadowLight">
-<li><a href="http://translink.com.au/" title="TransLink - Home">Home</a></li>
-<li><a href="http://translink.com.au/travel-information" id="travelMenuLink">Travel information</a>
-<div id="travelMenu" class="megamenu">
-<div class="column">
-<ul>
-<li>
-<a href="/travel-information/journey-planner">Journey planner</a>
-<ul>
-<li><a href="/travel-information/journey-planner">Journey planner</a></li>
-<li><a href="/travel-information/journey-planner/train-planner">Train journey planner</a></li>
-<li><a href="/travel-information/journey-planner/ferry-planner">Ferry journey planner</a></li>
-</ul>
-</li>
-<li>
-<a href="http://translink.com.au/travel-information/services-and-timetables">Services and timetables</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables/search">Find services and timetables</a></li>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables/buses">Buses</a></li>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables/trains">Trains</a></li>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables/ferries">Ferries</a></li>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables/event-transport">Event transport</a></li>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables/school-transport">School transport</a></li>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables/late-night-services">Late night services</a></li>
-<li><a href="/travel-information/services-and-timetables/stop-to-stop">Stop-to-stop timetables</a></li>
-<li><a href="http://translink.com.au/travel-information/services-and-timetables">More...</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/travel-information/maps">Maps</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/maps">Maps</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/travel-information/service-updates">Service updates</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/service-updates">Current status and upcoming changes</a></li>
-<li><a href="http://translink.com.au/travel-information/service-updates/about-service-updates">About service updates</a></li>
-<li><a href="http://translink.com.au/travel-information/service-updates/queensland-rail-timetable-changes">Queensland Rail timetable changes</a></li>
-<li><a href="http://translink.com.au/travel-information/service-updates/richlands-station">Richlands station</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/travel-information/stops-and-stations">Stops and stations</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/stops-and-stations/train-stations">Train stations</a></li>
-<li><a href="http://translink.com.au/travel-information/stops-and-stations/busway-stations">Busway stations</a></li>
-<li><a href="http://translink.com.au/travel-information/stops-and-stations/ferry-terminals">Ferry terminals</a></li>
-<li><a href="/travel-information/stops-and-stations/stop-timetables">Stop timetables</a></li>
-<li><a href="/travel-information/stops-and-stations/stops-near-you">Stops near you</a></li>
-<li><a href="http://translink.com.au/travel-information/stops-and-stations/bicycle-facilities">Bicycle facilities</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/travel-information/accessibility">Accessibility</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/accessibility">Accessible services</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/travel-information/safety-and-security">Safety and security</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/safety-and-security">Safety and security</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/travel-information/visiting-south-east-queensland">Visiting South East Queensland</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/visiting-south-east-queensland">Visiting South East Queensland</a></li>
-<li><a href="http://translink.com.au/travel-information/visiting-south-east-queensland/major-destinations">Major destinations</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/travel-information/how-to">How to</a>
-<ul>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-use-the-bus">How to use the bus</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-use-the-train">How to use the train</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-use-the-ferry">How to use the ferry</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-find-your-bus-stop">How to find your bus stop</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-plan-your-journey">How to plan your journey</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-transfer-between-services">How to transfer between services</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-travel-with-children-and-prams">How to travel with children and prams</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/how-to-travel-with-large-items">How to travel with large items</a></li>
-<li><a href="http://translink.com.au/travel-information/how-to/tips-for-courteous-behaviour">Tips for courteous behaviour</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</li>
-<li><a href="http://translink.com.au/tickets-and-fares" id="ticketsMenuLink">Tickets and fares</a>
-<div id="ticketsMenu" class="megamenu">
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/tickets-and-fares/go-card"><i>go</i> card</a>
-<ul>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/about-go-card">About <i>go</i> card</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/locations">Where to get it</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/register-your-go-card">Register your <i>go</i> card</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/top-up-your-go-card">Top up your <i>go</i> card.</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/costs-and-discounts">Costs and discounts</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/more">More...</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/tickets-and-fares/other-tickets">Other tickets</a>
-<ul>
-<li><a href="http://translink.com.au/tickets-and-fares/other-tickets/paper-tickets">Paper tickets</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/other-tickets/school-travel-passes">School travel passes</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/other-tickets/special-access-passes">Special access passes</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/tickets-and-fares/fares">Fares</a>
-<ul>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/current-fares">Current fares</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/changes-to-fares-and-ticketing-in-2011">Changes to fares and ticketing in 2011</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/changes-to-fares-and-ticketing-in-2012">Changes to fares and ticketing in 2012</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/concessions">Concessions</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/peak-and-off-peak-times">Peak and off-peak times</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/fare-zones">Zones</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/conditions-of-travel">Conditions of travel</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/fares/discounts-and-ways-to-save">Discounts and ways to save</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/tickets-and-fares/how-to">How to</a>
-<ul>
-<li><a href="http://translink.com.au/tickets-and-fares/how-to/how-to-use-a-fare-machine">How to use a fare machine</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/how-to/how-to-buy-a-ticket">How to buy a ticket</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/how-to/how-to-claim-a-refund-for-incorrect-change">How to claim a refund for incorrect change</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/how-to/how-to-upgrade-your-ticket">How to upgrade your ticket</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/how-to/tickets-and-fares-after-midnight">Tickets and fares after midnight</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</li>
-<li><a href="http://translink.com.au/news-and-updates" id="newsMenuLink">News and updates</a></li>
-<li><a href="http://translink.com.au/about-translink" id="aboutusMenuLink">About TransLink</a>
-<div id="aboutusMenu" class="megamenu">
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink/who-we-are">Who we are</a>
-<ul>
-<li><a href="http://translink.com.au/about-translink/who-we-are/our-culture-and-values">Our culture and values</a></li>
-<li><a href="http://translink.com.au/about-translink/who-we-are/governance">Governance</a></li>
-<li><a href="http://translink.com.au/about-translink/who-we-are/our-board">Our board</a></li>
-<li><a href="http://translink.com.au/about-translink/who-we-are/our-leadership">Our leadership</a></li>
-<li><a href="http://translink.com.au/about-translink/who-we-are/who-we-work-with">Who we work with</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink/what-we-do">What we do</a>
-<ul>
-<li><a href="http://translink.com.au/about-translink/what-we-do/strategic-plan">Strategic plan</a></li>
-<li><a href="http://translink.com.au/about-translink/what-we-do/customer-research">Customer research</a></li>
-<li><a href="http://translink.com.au/about-translink/what-we-do/customer-service">Customer service</a></li>
-<li><a href="http://translink.com.au/about-translink/what-we-do/public-transport-planning">Public transport planning</a></li>
-<li><a href="http://translink.com.au/about-translink/what-we-do/infrastructure-projects">Infrastructure projects</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink/our-service-area">Our service area</a>
-<ul>
-<li><a href="http://translink.com.au/about-translink/our-service-area">Our service area</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink/reporting-and-publications">Reporting and publications</a>
-<ul>
-<li><a href="http://translink.com.au/about-translink/reporting-and-publications/media-releases">Media releases</a></li>
-<li><a href="http://translink.com.au/about-translink/reporting-and-publications/annual-and-quarterly-reports">Annual and quarterly reports</a></li>
-<li><a href="http://translink.com.au/about-translink/reporting-and-publications/key-facts-and-figures">Key facts and figures</a></li>
-<li><a href="http://translink.com.au/about-translink/reporting-and-publications/right-to-information">Right to information</a></li>
-<li><a href="http://translink.com.au/about-translink/reporting-and-publications/translink-network-plan">TransLink Network Plan</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="column">
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink/employment">Employment</a>
-<ul>
-<li><a href="https://smartjobs.qld.gov.au/jobtools/jncustomsearch.searchResults?in_organid=14904&amp;in_multi02_id=requirements.agencynumber&amp;in_multi02=%2215389%22" target="_blank">Jobs with TransLink</a></li>
-<li><a href="http://translink.com.au/about-translink/employment/graduates">Graduates</a></li>
-<li><a href="http://translink.com.au/about-translink/employment/types-of-work">Types of work</a></li>
-<li><a href="http://translink.com.au/about-translink/employment/whats-it-like">What it&rsquo;s like</a></li>
-<li><a href="http://translink.com.au/about-translink/employment/benefits-and-opportunities">Benefits and opportunities</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink/business-and-partnership-opportunities">Business and partnership opportunities</a>
-<ul>
-<li><a href="http://translink.com.au/about-translink/business-and-partnership-opportunities/become-a-go-card-retailer">Become a <i>go</i> card retailer</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<a id="content-shortcut" tabindex="0"></a>
-<div id="contentContainer">
-<div id="breadcrumbs">
-<span class="access">You are here:</span>
-<p>
-<a href="http://translink.com.au/">Home</a>
-<a href="http://translink.com.au/travel-information">Travel information</a>
-
-<a href="http://translink.com.au/travel-information/services-and-timetables">Services and timetables</a>
-
-<a href="http://translink.com.au/travel-information/services-and-timetables/buses">Buses</a>
-<a href="/travel-information/services-and-timetables/buses/bus-timetables">Bus timetables</a>
-Bus timetables
-
-</p>
-</div>
-<div id="contentleftCol">
-<div id="headingBar" class="clearfix">
-<h1>Bus timetables</h1>
-<span id="print"><a href="javascript:window.print()" class="noBorder">Print</a></span>
-<span id="resize_up"><a href="#">increase text size</a></span>
-<span id="resize_mid"><a href="#">reset text size</a></span>
-<span id="resize_down"><a href="#">decrease text size</a></span>
-</div>
-<div class="underline indented">&nbsp;</div>
-
-
-<div class="useful_green">
-<form action="/travel-information/services-and-timetables/buses/bus-timetables" method="post">
-<span class="inputGroup">
-<label for="RouteNumber">Bus route code</label><br />
-<input id="RouteNumber" name="RouteNumber" type="text" value="" />
-</span>
-<span class="inputGroup">
-<label for="TimetableDate">Date</label><br />
-<select class="dateSelection" id="TimetableDate" name="TimetableDate"><option value="2011-11-13">Today (Sunday)</option>
-<option selected="selected" value="2011-11-14">Mon 14 Nov 2011</option>
-<option value="2011-11-15">Tue 15 Nov 2011</option>
-<option value="2011-11-16">Wed 16 Nov 2011</option>
-<option value="2011-11-17">Thu 17 Nov 2011</option>
-<option value="2011-11-18">Fri 18 Nov 2011</option>
-<option value="2011-11-19">Sat 19 Nov 2011</option>
-<option value="2011-11-20">Sun 20 Nov 2011</option>
-<option value="2011-11-21">Mon 21 Nov 2011</option>
-<option value="2011-11-22">Tue 22 Nov 2011</option>
-<option value="2011-11-23">Wed 23 Nov 2011</option>
-<option value="2011-11-24">Thu 24 Nov 2011</option>
-<option value="2011-11-25">Fri 25 Nov 2011</option>
-<option value="2011-11-26">Sat 26 Nov 2011</option>
-<option value="2011-11-27">Sun 27 Nov 2011</option>
-<option value="2011-11-28">Mon 28 Nov 2011</option>
-<option value="2011-11-29">Tue 29 Nov 2011</option>
-<option value="2011-11-30">Wed 30 Nov 2011</option>
-<option value="2011-12-01">Thu 1 Dec 2011</option>
-<option value="2011-12-02">Fri 2 Dec 2011</option>
-<option value="2011-12-03">Sat 3 Dec 2011</option>
-<option value="2011-12-04">Sun 4 Dec 2011</option>
-<option value="2011-12-05">Mon 5 Dec 2011</option>
-<option value="2011-12-06">Tue 6 Dec 2011</option>
-<option value="2011-12-07">Wed 7 Dec 2011</option>
-<option value="2011-12-08">Thu 8 Dec 2011</option>
-<option value="2011-12-09">Fri 9 Dec 2011</option>
-</select>
-</span>
-<span class="inputGroupButtons" style="text-align: right;">
-<input type="submit" value="Search" class="blueButton" />
-</span>
-</form>
-</div>
-
-<div class="content">
-<p>Please select one of the following timetables:</p>
-<table class="contentTable">
-<caption class="access">Timetable search results</caption>
-<thead>
-<tr>
-<th>Route code</th>
-<th>Route name</th>
-</tr>
-</thead>
-<tbody>
-
-<tr>
-<td><a href="/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&amp;direction=Outbound&amp;routeCode=130">130 - Outbound</a></td>
-<td><a href="/travel-information/services-and-timetables/buses/view-bus-timetable/1925?timetableDate=2011-11-14&amp;direction=Outbound&amp;routeCode=130">Parkinson Buz 130 Via Sunnybank</a></td>
-</tr>
-
-</tbody>
-</table>
-</div>
-
-</div>
-<div id="contentrightCol" class="clearfix">
-
-
-
-</div>
-</div>
-<a id="footer-shortcut" tabindex="0"></a>
-<div id="footer">
-<div id="footer-nav">
-<div id="footer-travelinfo" class="footer-links leftalign">
-<h2>Travel Information</h2>
-<div class="underline">&nbsp;</div>
-<ul>
-<li>
-<a href="/travel-information/journey-planner" title="Plan your journey">Journey planner</a>
-</li>
-<li>
-<a href="http://translink.com.au/travel-information/services-and-timetables" title="View information about our services and timetables">Services and timetables</a>
-</li>
-<li>
-<a href="http://translink.com.au/travel-information/maps" title="See our maps">
-Maps
-</a>
-</li>
-<li>
-<a href="http://translink.com.au/travel-information/service-updates" title="View current status and upcoming changes">
-Service updates
-</a>
-</li>
-<li>
-<a href="http://translink.com.au/travel-information/how-to" title="How to guides">
-How to&hellip;
-</a>
-</li>
-</ul>
-<ul>
-<li><a href="http://translink.com.au/travel-information" title="More travel information">
-More travel information</a></li>
-</ul>
-</div>
-<div id="footer-tickets" class="footer-links leftalign">
-<h2>Tickets and fares</h2>
-<div class="underline">&nbsp;</div>
-<ul>
-<li>
-<a href="http://translink.com.au/tickets-and-fares/go-card" title="View information about go card"><i>go</i> card</a>
-</li>
-<li>
-<a href="http://translink.com.au/tickets-and-fares/other-tickets" title="View information about our other tickets and passes">Other tickets</a>
-</li>
-<li>
-<a href="http://translink.com.au/tickets-and-fares/fares" title="View information about fares">Fares</a>
-</li>
-<li><a href="http://translink.com.au/tickets-and-fares/how-to" title="How to guides">
-How to&hellip;</a></li>
-</ul>
-<ul>
-<li><a href="http://translink.com.au/tickets-and-fares" title="More on tickets and fares">More
-on tickets and fares</a></li>
-</ul>
-</div>
-<div id="footer-about" class="leftalign">
-<h2>About TransLink</h2>
-<div class="underline">&nbsp;</div>
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink/who-we-are" title="Find out more about who we are">Who we are</a>
-</li>
-<li>
-<a href="http://translink.com.au/about-translink/what-we-do" title="See what we do">What we do</a>
-</li>
-<li>
-<a href="http://translink.com.au/about-translink/what-we-do/public-transport-planning" title="See what we've got planned for the future">Our future plans</a>
-</li>
-<li>
-<a href="http://translink.com.au/about-translink/our-service-area" title="View information about where we operate">Our service area</a>
-</li>
-<li>
-<a href="http://translink.com.au/about-translink/reporting-and-publications" title="View our reports and publications">Reporting and publications</a>
-</li>
-</ul>
-<ul>
-<li>
-<a href="http://translink.com.au/about-translink" title="More about TransLink">More about TransLink</a>
-</li>
-</ul>
-</div>
-<div id="footer-searchbox" class="rightalign">
-<h3 id="cantfindheading">
-Can't find what you're looking for? Try&hellip;</h3>
-<form action="http://pan.search.qld.gov.au/search/search.cgi" class="searchform jLabel" id="footer-search" name="footer-search">
-<fieldset>
-<legend class="access">Search the TransLink website</legend>
-<input type="hidden" name="num_ranks" value="10" />
-<input type="hidden" name="tiers" value="off" />
-<input type="hidden" name="collection" value="qld-gov" />
-<input type="hidden" name="profile" value="translink" />
-<p>
-<label for="searchbox2" id="searchlabel2">
-Search site&hellip;</label>
-<input type="text" name="query" id="searchbox2" value="" class="searchfield" autocomplete="off" /><input
-type="submit" value="Search" class="searchbutton" id="footersearch-button" />
-</p>
-</fieldset>
-</form>
-<ul id="footer-courtesy">
-<li><a href="http://translink.com.au/utils/goto/context/mobile" title="View the website on your mobile">Mobile site</a></li>
-<li><a href="http://translink.com.au/tickets-and-fares/go-card/online" title="go card"><i>go</i> card login</a></li>
-<li><a href="http://translink.com.au/site-information/site-map" title="An overview of the entire TransLink website">Site map</a></li>
-<li class="last"><a href="http://translink.com.au/site-information/contact-us-and-help" title="Call us on 13 12 30, e-mail us, see us in person, follow us on Twitter, or send us a letter.">Contact us &amp; help</a></li>
-</ul>
-<div id="footer-icons">
-<a class="hotspot1" href="http://translink.com.au/travel-information/services-and-timetables/buses" title="View the bus services page.">&nbsp;</a>
-<a class="hotspot2" href="http://translink.com.au/travel-information/services-and-timetables/trains" title="View the train services page.">&nbsp;</a>
-<a class="hotspot3" href="http://translink.com.au/travel-information/services-and-timetables/ferries" title="View the ferry services page.">&nbsp;</a>
-</div>
-</div>
-</div>
-<div id="footer-languages" class="textShadowDark">
-<h3>Information in your language</h3>
-<ul id="section-other-languages" class="clearfix">
-<li class="first"><a href="http://translink.com.au/site-information/languages/arabic" title="Arabic"><span dir="rtl">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</span></a></li>
-<li><a href="http://translink.com.au/site-information/languages/chinese" title="Chinese">&#31616;&#20307;&#20013;&#25991;</a></li>
-<li><a href="http://translink.com.au/site-information/languages/french" title="French">Fran&ccedil;ais</a></li>
-<li><a href="http://translink.com.au/site-information/languages/german" title="German">Deutsch</a></li>
-<li><a href="http://translink.com.au/site-information/languages/greek" title="Greek">&epsilon;&lambda;&lambda;&eta;&nu;&iota;&kappa;&#940;</a></li>
-<li><a href="http://translink.com.au/site-information/languages/italian" title="Italian">Italiano</a></li>
-<li><a href="http://translink.com.au/site-information/languages/japanese" title="Japanese">&#26085;&#26412;&#35486;</a></li>
-<li><a href="http://translink.com.au/site-information/languages/korean" title="Korean">&#54620;&#44397;&#50612;</a></li>
-<li><a href="http://translink.com.au/site-information/languages/serbian" title="Serbian">&#1057;&#1088;&#1087;&#1089;&#1082;&#1080;</a></li>
-<li><a href="http://translink.com.au/site-information/languages/spanish" title="Spanish">Espa&ntilde;ol</a></li>
-<li><a href="http://translink.com.au/site-information/languages/vietnamese" title="Vietnamese">Vi&#7879;t Ng&#7919;</a></li>
-</ul>
-</div>
-<div id="footer-end">
-<ul id="section-footer-links">
-<li><a href="http://translink.com.au/site-information/legal/copyright" title="Copyright">Copyright</a></li>
-<li><a href="http://translink.com.au/site-information/legal/disclaimer" title="Disclaimer">Disclaimer</a></li>
-<li><a href="http://translink.com.au/site-information/legal/privacy" title="Privacy">Privacy</a></li>
-<li><a href="http://translink.com.au/about-translink/reporting-and-publications/right-to-information" title="Right to information">Right to information</a></li>
-<li class="last"><a href="http://translink.com.au/site-information/contact-us-and-help/website-help" title="Website help">Website help</a></li>
-</ul>
-<p>&copy; TransLink Transit Authority 2010 <span style="color: #999;">v1.7.7.139</span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</body>
+ </body>
 </html>
