@@ -28,7 +28,7 @@ module Translink
 
     # Builds an array of trip pages.
     #
-    # @return [Array(Page::Trip)]
+    # @return [Array<Page::Trip>]
     def trip_pages
       page.search('a.map-link-top').map do |anchor|
         Trip.new url_from_href(anchor[:href])
