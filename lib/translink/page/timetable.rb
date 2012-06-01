@@ -1,8 +1,8 @@
 module Translink
   class Page::Timetable < Page
-    # Builds an array of routes.
+    # Builds an array of route pages.
     #
-    # @return [Array(Route)]
+    # @return [Array(Page::Route)]
     def route_pages
       page.search('table tr td:last-child a').reduce Array.new do |pages, anchor|
         route = Route.new url_from_href(anchor['href'])
