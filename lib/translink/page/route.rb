@@ -31,7 +31,7 @@ module Translink
     # @return [Array<Page::Trip>]
     def trip_pages
       page.search('a.map-link-top').map do |anchor|
-        Trip.new url_from_href(anchor[:href])
+        Trip.new url_from_href(anchor[:href]), date
       end
     end
   end
