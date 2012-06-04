@@ -29,3 +29,23 @@ class Page::RouteTest < MiniTest::Unit::TestCase
     assert_equal route.date.to_date, trip_pages.last.date 
   end
 end
+
+class Page::RouteTypeTest < MiniTest::Unit::TestCase
+  def test_bus
+    assert_equal 3, Page::Route.new('http://jp.translink.com.au/travel-information/network-information/buses/all-timetables', 'City').route_type
+  end
+
+  def test_ferry
+    assert_equal 4, Page::Route.new('http://jp.translink.com.au/travel-information/network-information/ferries/all-timetables', 'City').route_type 
+  end
+
+  def test_train
+    assert_equal 0, Page::Route.new('http://jp.translink.com.au/travel-information/network-information/trains/richlands', 'City').route_type
+  end
+
+  def test_exception
+    assert_raises Page::Route::UnknownRouteTypeError do
+      Page::Route.new('http://foo', 'City').route_type
+    end
+  end
+end
