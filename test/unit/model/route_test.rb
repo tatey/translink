@@ -8,8 +8,18 @@ class Model::RouteTest < MiniTest::Unit::TestCase
       route_page.expect :short_name, '130'
       route_page.expect :long_name, 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson'
       route_page.expect :route_type, 0
+      assert_equal 0, Model::Route.count
       assert_equal Model::Route.find_or_add_from_route_page(route_page), Model::Route.find_or_add_from_route_page(route_page)
       assert_equal 1, Model::Route.count
+    end
+  end
+
+  def test_create_trip_from_trip_page
+    DB.context 'sqlite::memory:', :migrate => true do
+      trip_page   = OpenStruct.new :direction => 'outbound', :service_id => 8550, :trip_id => 1712196
+      route_model = Model::Route.new
+      trip_model  = route_model.create_trip_from_trip_page trip_page
+      assert trip_model.saved?
     end
   end
 end
