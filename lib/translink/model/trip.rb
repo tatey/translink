@@ -6,7 +6,7 @@ module Translink
       storage_names[:default] = 'trips'
 
       property :id,         Serial
-      property :direction,  Integer
+      property :direction,  String
       property :service_id, Integer
       property :trip_id,    Integer
 
