@@ -17,7 +17,7 @@ module Translink
       # doesn't exist.
       #
       # @param route_pate [Page::Route] HTML page that represents the route.
-      # @return [Model::Route]
+      # @return [Model::Route] DataMapper record.
       def self.find_or_add_from_route_page route_page
         first_or_create :route_id   => route_page.route_id,
                         :short_name => route_page.short_name,
