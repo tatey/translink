@@ -2,11 +2,10 @@ module Translink
   class CLI
     RUNNABLE = ['help', 'scrape']
 
-    attr_accessor :out, :pwd, :__crawler__, :__stop__
+    attr_accessor :out, :pwd, :__crawler__
 
     def initialize pwd
       self.__crawler__ = Translink::Crawler
-      self.__stop__    = Model::Stop
       self.out         = $stdout
       self.pwd         = pwd
     end
