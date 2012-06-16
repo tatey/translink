@@ -42,7 +42,7 @@ module Translink
       # Time vehicle starts from the +stop+. Translink doesn't provide an
       # explicit +departure_time+ so we use the +arrival_time+.
       #
-      # @return [String] Eg: "10:00 A.M.
+      # @return [String] Eg: "10:00 A.M."
       def departure_time
         arrival_time
       end
