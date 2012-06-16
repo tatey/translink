@@ -25,11 +25,11 @@ module Translink
                         :route_type => route_page.route_type
       end
 
-      # Create a trip from the given +trip_page+.
+      # Create a trip.
       #
       # @param trip_page [Page::Trip] HTML page that represents the trip.
       # @return [Model::Trip] DataMapper record.
-      def create_trip_from_trip_page trip_page
+      def add_trip_from_trip_page trip_page
         Trip.new.tap do |trip|
           trip.route = self
           trip.trip_page! trip_page
