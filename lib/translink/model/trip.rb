@@ -12,6 +12,16 @@ module Translink
 
       belongs_to :route
 
+      has n, :stop_times
+
+      def add_stop_time_from_stop_time_page stop_time_page
+        StopTime.new.tap do |stop_time|
+          stop_time.trip = self
+          stop_time.stop_time_page! stop_time_page
+          stop_time.save
+        end
+      end
+
       # Sets properties from the given +trip_page+. 
       #
       # @param trip_page [Trip::Page] HTML page that represents the trip.

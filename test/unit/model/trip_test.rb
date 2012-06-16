@@ -9,4 +9,12 @@ class Model::TripTest < MiniTest::Unit::TestCase
     assert_equal trip_model.service_id, trip_page.service_id
     assert_equal trip_model.trip_id, trip_page.trip_id
   end
+
+  def test_add_stop_time_from_stop_time_page
+    stop_time_page  = OpenStruct.new :arrival_time => '10:00 A.M.', :stop_page => OpenStruct.new, :stop_sequence => 7
+    trip_model      = Model::Trip.new
+    stop_time_model = trip_model.add_stop_time_from_stop_time_page stop_time_page
+    assert_equal stop_time_model.arrival_time, stop_time_page.arrival_time
+    assert_equal stop_time_model.stop_sequence, stop_time_page.stop_sequence
+  end
 end

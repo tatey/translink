@@ -5,15 +5,15 @@ module Translink
 
       storage_names[:default] = 'stops'
 
-      property :id,       Serial
-      property :name,     String
-      property :summary,  String
+      property :id,        Serial
+      property :stop_id,   Integer
+      property :stop_name, String
 
-      has n, :services
-      has n, :routes, :through => :services
+      has n, :stop_times
 
-      def self.find_or_add_from_stop stop
-        Stop.first_or_create :name => stop.name, :summary => stop.summary
+      def self.find_or_add_from_stop_page stop_page
+        first_or_create :stop_id   => stop_page.stop_id,
+                        :stop_name => stop_page.stop_name
       end
     end
   end
