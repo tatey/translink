@@ -1,7 +1,7 @@
 require 'helper'
 
 class Model::RouteTest < MiniTest::Unit::TestCase
-  def test_find_or_add_from_route_page
+  def test_find_or_add_route_from_route_page
     DB.context 'sqlite::memory:', :migrate => true do
       route_page = MiniTest::Mock.new
       route_page.expect :route_id, 130
@@ -9,7 +9,7 @@ class Model::RouteTest < MiniTest::Unit::TestCase
       route_page.expect :long_name, 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson'
       route_page.expect :route_type, 0
       assert_equal 0, Model::Route.count
-      assert_equal Model::Route.find_or_add_from_route_page(route_page), Model::Route.find_or_add_from_route_page(route_page)
+      assert_equal Model::Route.find_or_add_route_from_route_page(route_page), Model::Route.find_or_add_route_from_route_page(route_page)
       assert_equal 1, Model::Route.count
     end
   end
