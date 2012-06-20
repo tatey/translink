@@ -7,8 +7,8 @@ Brisbane. Their website has an abundance of data with no easy way for a develope
 to query it.
 
 Translink (Program) scrapes bus stops, routes and service times into a nicely structured
-database. Data is sourced from the [Translink website](http://translink.com.au/). Only routes
-with codes 100..499, GLIDER and LOOP are persisted. You should be aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
+database. Data is sourced from the [Translink website](http://translink.com.au/).You should be 
+aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
 ## Installation
 
