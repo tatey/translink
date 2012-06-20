@@ -17,4 +17,12 @@ class Model::TripTest < MiniTest::Unit::TestCase
     assert_equal stop_time_model.arrival_time, stop_time_page.arrival_time
     assert_equal stop_time_model.stop_sequence, stop_time_page.stop_sequence
   end
+
+  def test_add_stop_times_from_stop_time_pages
+    stop_time_page1  = OpenStruct.new :arrival_time => '10:00 A.M.', :stop_page => OpenStruct.new, :stop_sequence => 7
+    stop_time_page2  = OpenStruct.new :arrival_time => '11:00 A.M.', :stop_page => OpenStruct.new, :stop_sequence => 8
+    trip_model       = Model::Trip.new
+    stop_time_models = trip_model.add_stop_times_from_stop_time_pages [stop_time_page1, stop_time_page2]
+    assert_equal 2, stop_time_models.size
+  end
 end

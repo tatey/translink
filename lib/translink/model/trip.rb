@@ -7,18 +7,30 @@ module Translink
 
       property :id,         Serial
       property :direction,  String
-      property :service_id, Integer
-      property :trip_id,    Integer
+      property :service_id, Integer # Service belongs to a trip. Assigned by Translink.
+      property :trip_id,    Integer # Unique ID assigned by Translink.
 
       belongs_to :route
 
       has n, :stop_times
 
+      # Creates a +Model::StopTime+ record and associates it with this
+      # trip.
+      #
+      # @param stop_time_page [Page::Stop::StopTime] HTML page representing the
+      #   stop-time.
+      # @return [void]
       def add_stop_time_from_stop_time_page stop_time_page
         StopTime.new.tap do |stop_time|
           stop_time.trip = self
           stop_time.stop_time_page! stop_time_page
           stop_time.save
+        end
+      end
+
+      def add_stop_times_from_stop_time_pages stop_time_pages
+        stop_time_pages.map do |stop_time_page|
+          add_stop_time_from_stop_time_page stop_time_page
         end
       end
 

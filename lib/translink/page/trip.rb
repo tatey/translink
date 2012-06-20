@@ -29,7 +29,7 @@ module Translink
 
     class StopTime
       attr_accessor :arrival_time  # [String] The time the vehicle arrives at the +stop+.
-      attr_accessor :stop          # [Page::Trip::Stop] Stop associated with the +arrival_time+.
+      attr_accessor :stop_page     # [Page::Trip::Stop] Stop associated with the +arrival_time+.
       attr_accessor :stop_sequence # [Integer] Order in which this stop is visited in the trip.
 
       # Creates a new stop time.
@@ -52,7 +52,7 @@ module Translink
       # @param node_set [Nokogiri::XML::NodeSet] The HTML fragment to search.
       # @return [Page::Trip::Stop] 
       def html! node_set
-        @stop         = Stop.new.html! node_set
+        @stop_page    = Stop.new.html! node_set
         @arrival_time = node_set.search('td').first.text.sub('.', ':').sub(/(a|p)(m)$/, ' \1.M.').upcase # "12:25pm" -> "12:25 P.M"
         self
       end

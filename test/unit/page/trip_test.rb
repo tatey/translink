@@ -29,18 +29,18 @@ class Page::TripRequestTest < MiniTest::Unit::TestCase
   end
 
   def test_stop_times
-    stop1      = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Queen Street station, platform A6'; s.stop_id = '001002' }
-    stop2      = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Illaweena St at Waterstone'; s.stop_id = '010764' }
+    stop_page1 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Queen Street station, platform A6'; s.stop_id = '001002' }
+    stop_page2 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Illaweena St at Waterstone'; s.stop_id = '010764' }
     stop_times = stub_trip.stop_times
     stop_time1 = stop_times.first
     stop_time2 = stop_times.last
     assert_equal 27, stop_times.size
     assert_equal 0, stop_time1.stop_sequence
     assert_equal '11:25 P.M.', stop_time1.arrival_time
-    assert_equal stop1, stop_time1.stop
+    assert_equal stop_page1, stop_time1.stop_page
     assert_equal 26, stop_time2.stop_sequence
     assert_equal '12:14 A.M.', stop_time2.arrival_time
-    assert_equal stop2, stop_time2.stop
+    assert_equal stop_page2, stop_time2.stop_page
   end
 
   def test_trip_id
