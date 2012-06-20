@@ -35,7 +35,7 @@ module Translink
       date = Date.parse $1
       uri  = $3 || 'sqlite://' + File.join(pwd, "#{date}.sqlite3")
       DB.context uri, :migrate => true do
-        crawler = __crawler__.new 'http://jp.translink.com.au/travel-information/services-and-timetables/buses/all-bus-timetables'
+        crawler = __crawler__.new 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables'
         crawler.crawl date
       end
     end
