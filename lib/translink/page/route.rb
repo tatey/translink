@@ -20,7 +20,7 @@ module Translink
     #
     # @return [String]
     def short_name
-      page.search('h1').first.text.sub('Route ', '')
+      page.search('div#headingBar h1').first.text.sub('Route ', '')
     end
 
     # Get the date this route is running. Trip pages are bound by this

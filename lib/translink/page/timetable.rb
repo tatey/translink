@@ -17,7 +17,7 @@ module Translink
     #   TZ should be Australia/Brisbane and the time should be at midnight.
     # @return [Timetable]
     def timetable_page timestamp
-      form  = page.forms[0]
+      form  = page.forms[1]
       value = timestamp.strftime('%-d/%m/%y %I:%M:%S %p') # Eg: "4/06/2012 12:00:00 AM"
       form.field_with(:name => 'Date').value = value
       self.class.new(url_from_href(form.action)).tap do |page|

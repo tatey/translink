@@ -6,6 +6,6 @@ class PageTest < MiniTest::Unit::TestCase
   end
   
   def test_agent
-    assert_equal "Translink/#{VERSION} Ruby/#{RUBY_VERSION} (https://github.com/tatey/translink)", Page.new('http://localhost').agent.user_agent
+    assert_equal "Mozilla/5.0 (Translink/#{VERSION} Ruby/#{RUBY_VERSION} (https://github.com/tatey/translink))", Page.new('http://localhost').agent.user_agent
   end
 end

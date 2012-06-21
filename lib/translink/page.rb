@@ -1,6 +1,6 @@
 module Translink
   class Page
-    USER_AGENT = "Translink/#{VERSION} Ruby/#{RUBY_VERSION} (https://github.com/tatey/translink)"
+    USER_AGENT = "Mozilla/5.0 (Translink/#{VERSION} Ruby/#{RUBY_VERSION} (https://github.com/tatey/translink))"
     
     attr_accessor :agent, :page, :url
     
