@@ -8,6 +8,8 @@ module Translink
       property :id,        Serial
       property :stop_id,   Integer
       property :stop_name, String
+      property :stop_lat,  Float
+      property :stop_lon,  Float
 
       has n, :stop_times
 
@@ -18,7 +20,9 @@ module Translink
       # @return [Model::Stop] DataMapper record.
       def self.find_or_add_from_stop_page stop_page
         first_or_create :stop_id   => stop_page.stop_id,
-                        :stop_name => stop_page.stop_name
+                        :stop_name => stop_page.stop_name,
+                        :stop_lat  => stop_page.stop_lat,
+                        :stop_lon  => stop_page.stop_lon
       end
     end
   end
