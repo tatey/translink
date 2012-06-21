@@ -3,6 +3,8 @@ module Translink
     class Stop
       attr_accessor :stop_id   # [String] Unique ID.
       attr_accessor :stop_name # [String] Eg: "Queen Street station, platform A6".
+      attr_accessor :stop_lat  # [String] Eg: "27.470677".
+      attr_accessor :stop_lon  # [String] Eg: "153.024747".
 
       # Tests equality with +other+. Considered equal if +stop_id+ and 
       # +stop_name+ are equal.
@@ -23,6 +25,7 @@ module Translink
         anchor['href'] =~ /([^\/]+)$/
         @stop_id = $1
         @stop_name = anchor.text
+        @stop_lat, @stop_lon = node_set['data-position'].split(',')
         self
       end
     end

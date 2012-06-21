@@ -29,8 +29,8 @@ class Page::TripRequestTest < MiniTest::Unit::TestCase
   end
 
   def test_stop_times
-    stop_page1 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Queen Street station, platform A6'; s.stop_id = '001002' }
-    stop_page2 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Illaweena St at Waterstone'; s.stop_id = '010764' }
+    stop_page1 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Queen Street station, platform A6'; s.stop_id = '001002'; s.stop_lat = '-27.470677'; s.stop_lon = '153.024747' }
+    stop_page2 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Illaweena St at Waterstone'; s.stop_id = '010764'; s.stop_lat = '-27.639463'; s.stop_lon = '153.052551' }
     stop_times = stub_trip.stop_times
     stop_time1 = stop_times.first
     stop_time2 = stop_times.last
