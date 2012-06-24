@@ -6,7 +6,7 @@ module Translink
       storage_names[:default] = 'stops'
 
       property :id,        Serial
-      property :stop_id,   Integer
+      property :stop_id,   String
       property :stop_name, String
       property :stop_lat,  Float
       property :stop_lon,  Float
