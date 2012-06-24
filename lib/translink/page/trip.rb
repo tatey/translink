@@ -76,7 +76,7 @@ module Translink
     #
     # @return [String] "inbound" or "outbound".
     def direction
-      url.to_s =~ /((in|out)bound)/
+      url.to_s =~ /information\/([a-z]+)\//
       $1
     end
 
@@ -84,7 +84,7 @@ module Translink
     #
     # @return [String]
     def trip_id
-      url.to_s =~ /bound\/([^\/]+)/
+      url.to_s =~ /information\/[a-z]+\/([^\/]+)/
       $1
     end
 
@@ -92,7 +92,7 @@ module Translink
     #
     # @return [String]
     def service_id
-      url.to_s =~ /bound\/[^\/]+\/([^\/]+)/
+      url.to_s =~ /information\/[a-z]+\/[^\/]+\/([^\/]+)/
       $1
     end
 

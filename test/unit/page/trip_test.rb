@@ -11,6 +11,8 @@ class Page::TripTest < MiniTest::Unit::TestCase
   def test_direction
     assert_equal 'inbound', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/inbound/8550/1704728', Date.today).direction
     assert_equal 'outbound', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8550/1712196/2012-05-31', Date.today).direction
+    assert_equal 'counterclockwise', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/counterclockwise/8904/1882248/2012-06-25', Date.today).direction
+    assert_equal 'clockwise', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/clockwise/8904/1882152/2012-06-25', Date.today).direction
   end
 end
 
