@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors              = ['Tate Johnson']
   s.email                = ['tate@tatey.com']
   s.homepage             = 'https://github.com/tatey/translink'
-  s.summary              = %q{Scrapes bus stops, routes and service times into a nicely structured database.}
-  s.description          = %q{Scrapes bus stops, routes and service times into a nicely structured database.}
+  s.summary              = %q{Scrapes bus routes, trips, stops and times into a relational database.}
+  s.description          = %q{Scrapes bus routes, trips, stops and times into a relational database.}
 
   s.rubyforge_project = 'translink'
 

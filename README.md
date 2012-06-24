@@ -3,11 +3,11 @@
 [![Build Status](https://secure.travis-ci.org/tatey/translink.png)](http://travis-ci.org/tatey/translink)
 
 [Translink](http://translink.com.au/) (Organisation) coordinates public transport operations in
-Brisbane. Their website has an abundance of data with no easy way for a developer
+South-East Queensland. Their website has an abundance of data with no easy way for a developer
 to query it.
 
-Translink (Program) scrapes bus stops, routes and service times into a nicely structured
-database. Data is sourced from the [Translink website](http://translink.com.au/).You should be 
+Translink (Program) scrapes bus routes, trips, stops and times into a relational database. 
+Data is sourced from the [Translink website](http://translink.com.au/).You should be 
 aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
 ## Installation
