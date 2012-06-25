@@ -30,6 +30,24 @@ Change the path to the SQLite database.
 
     $ translink scrape 2011-11-24 --uri=sqlite:///Users/Tate/Downloads/translink.sqlite3
 
+## Queries
+
+Stops the 130 visits on the outbound trip.
+
+    SELECT DISTINCT(stops.id), stops.stop_name, stops.stop_lat, stops.stop_lon FROM routes
+    INNER JOIN trips ON trips.route_id = routes.id
+    INNER JOIN stop_times ON stop_times.trip_id = trips.id
+    INNER JOIN stops ON stop_times.stop_id = stops.id
+    WHERE routes.short_name = '130' AND trips.direction = 'outbound';
+
+Routes that visit the 'Calam Rd near Honeywood St' stop.
+
+    SELECT DISTINCT(routes.id), short_name FROM stops
+    INNER JOIN stop_times ON stop_times.stop_id = stops.id
+    INNER JOIN trips ON stop_times.trip_id = trips.id
+    INNER JOIN routes ON routes.id = trips.route_id
+    WHERE stops.stop_name = 'Calam Rd near Honeywood St';
+
 ## Schema
 
 ![Class Analysis Diagram](https://github.com/tatey/translink/raw/master/doc/schema.png)
