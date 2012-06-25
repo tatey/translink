@@ -1,6 +1,6 @@
 # Changelog
 
-## Current
+## 2012-06-26 / v1.0.0
 
 * Compatibility with Translink website (2012-05-29).
 * Changed schema to conform with Google Transit feed specification.
