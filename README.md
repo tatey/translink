@@ -55,7 +55,7 @@ Routes that visit the 'Calam Rd near Honeywood St' stop.
 ## Contributing
 
 1. Fork it
-2. Install dependancies (`bundle install`)
+2. Install dependencies (`bundle install`)
 3. Create your feature branch (`git checkout -b my-new-feature`)
 4. Run tests (`rake test`)
 5. Commit your changes (`git commit -am 'Added some feature'`)
@@ -63,5 +63,8 @@ Routes that visit the 'Calam Rd near Honeywood St' stop.
 7. Create new Pull Request
 
 ## Copyright
+
+Doing something interesting with this data? Shoot me an [e-mail](mailto:tate@tatey.com). I'd love to see how
+this is being used. An acknowledgement of this project is appreciated, but not required.
 
 Copyright © 2011 Tate Johnson. Released under the MIT license. See LICENSE.
