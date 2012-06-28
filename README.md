@@ -10,6 +10,9 @@ Translink (Program) scrapes bus routes, trips, stops and times into a relational
 Data is sourced from the [Translink website](http://translink.com.au/).You should be 
 aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
+I created Translink (Program) to solve my problem of getting lost on new routes. With this data I 
+have been working on an app for iOS called [Next Stop](http://nextstop.me).
+
 ## Installation
 
 Translink requires Ruby 1.9.2 or greater. For documentation on how to install Ruby on your
