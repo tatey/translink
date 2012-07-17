@@ -57,6 +57,8 @@ Routes that visit the 'Calam Rd near Honeywood St' stop.
 
 ## Contributing
 
+If you would like to help, please browse the [issues](https://github.com/tatey/translink/issues).
+
 1. Fork it
 2. Install dependencies (`bundle install`)
 3. Create your feature branch (`git checkout -b my-new-feature`)
