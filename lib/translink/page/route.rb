@@ -31,12 +31,28 @@ module Translink
       DateTime.parse page.search('select#TimetableDate option[selected]').first['value']
     end
 
+    # Get headsigns of directions travelled by this route.
+    #
+    # @return [Array<String>]
+    def headsigns
+      page.search('h3').map { |node| node.text.downcase }.uniq
+    end
+
+    # Get the direction of travel for the given +anchor+.
+    #
+    # @param anchor [Nokogiri::XML::Node] Anchor to ascend from.
+    # @return [Integer] +0+ for one (Regular) direction of travel, +1+ for
+    #   opposite (Goofy) direction of travel.
+    def direction_from_anchor anchor
+      headsigns.index anchor.ancestors('div.route-timetable').search('h3').first.text.downcase
+    end
+
     # Builds an array of trip pages.
     #
     # @return [Array<Page::Trip>]
     def trip_pages
       page.search('a.map-link-top').map do |anchor|
-        Trip.new url_from_href(anchor[:href]), date
+        Trip.new url_from_href(anchor[:href]), date, direction_from_anchor(anchor)
       end
     end
 

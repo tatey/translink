@@ -3,16 +3,22 @@ require 'helper'
 class Page::TripTest < MiniTest::Unit::TestCase
   def test_date
     timestamp = DateTime.now
-    assert_equal timestamp.to_date, Page::Trip.new('http://localhost', timestamp).date
+    assert_equal timestamp.to_date, Page::Trip.new('http://localhost', timestamp, Direction::REGULAR).date
     date = Date.today
-    assert_equal date, Page::Trip.new('http://localhost', date).date
+    assert_equal date, Page::Trip.new('http://localhost', date, Direction::REGULAR).date
   end
 
   def test_direction
-    assert_equal 'inbound', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/inbound/8550/1704728', Date.today).direction
-    assert_equal 'outbound', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8550/1712196/2012-05-31', Date.today).direction
-    assert_equal 'counterclockwise', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/counterclockwise/8904/1882248/2012-06-25', Date.today).direction
-    assert_equal 'clockwise', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/clockwise/8904/1882152/2012-06-25', Date.today).direction
+    timestamp = DateTime.now
+    assert_equal Direction::REGULAR, Page::Trip.new('http://localhost', timestamp, Direction::REGULAR).direction
+    assert_equal Direction::GOOFY, Page::Trip.new('http://localhost', timestamp, Direction::GOOFY).direction
+  end
+
+  def test_headsign
+    assert_equal 'inbound', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/inbound/8550/1704728', Date.today, Direction::GOOFY).headsign
+    assert_equal 'outbound', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8550/1712196/2012-05-31', Date.today, Direction::REGULAR).headsign
+    assert_equal 'counterclockwise', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/counterclockwise/8904/1882248/2012-06-25', Date.today, Direction::GOOFY).headsign
+    assert_equal 'clockwise', Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/clockwise/8904/1882152/2012-06-25', Date.today, Direction::REGULAR).headsign
   end
 end
 
@@ -23,7 +29,7 @@ class Page::TripRequestTest < MiniTest::Unit::TestCase
   end
 
   def stub_trip
-    Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8550/1712196/2012-05-31', Date.today)
+    Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8550/1712196/2012-05-31', Date.today, Direction::REGULAR)
   end
 
   def test_service_id

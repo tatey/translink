@@ -61,21 +61,24 @@ module Translink
       end
     end
 
-    attr_accessor :date # [Date] Date the trip runs on.
+    attr_accessor :date      # [Date] Date the trip runs on.
+    attr_accessor :direction # [Integer] Travel in one direction (Regular)
+                             # or the opposite (Goofy) direction.
 
     # Creates a new trip.
     # 
     # @param url [String] URL to fetch the page from.
     # @param date [Date] Date the trip runs on.
-    def initialize url, date
+    def initialize url, date, direction
       super url
       @date = date.to_date
+      @direction = direction
     end
 
-    # Get the trip's direction of travel.
+    # Get the trip's headsign.
     #
     # @return [String] "inbound" or "outbound".
-    def direction
+    def headsign
       url.to_s =~ /information\/([a-z]+)\//
       $1
     end
