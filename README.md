@@ -6,7 +6,8 @@
 South-East Queensland. Their website has an abundance of data with no easy way for a developer
 to query it.
 
-Translink (Program) scrapes bus routes, trips, stops and times into a relational database. 
+Translink (Program) scrapes bus routes, trips, stops and times into a relational database.
+The schema is a subset of the [General Transit Feed Specification](https://developers.google.com/transit/gtfs/reference).
 Data is sourced from the [Translink website](http://translink.com.au/).You should be 
 aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
@@ -52,6 +53,9 @@ Routes that visit the 'Calam Rd near Honeywood St' stop.
     WHERE stops.stop_name = 'Calam Rd near Honeywood St';
 
 ## Schema
+
+Schema is a subset of the [General Transit Feed Specification](https://developers.google.com/transit/gtfs/reference)
+defined by Google for [Google Transit](https://developers.google.com/transit/google-transit).
 
 ![Class Analysis Diagram](https://github.com/tatey/translink/raw/master/doc/schema.png)
 
