@@ -1,6 +1,6 @@
 module Translink
   class CLI
-    RUNNABLE = ['help', 'scrape']
+    RUNNABLE = ['help', 'scrape', 'version']
 
     attr_accessor :out, :pwd, :__crawler__
 
@@ -24,6 +24,7 @@ module Translink
     def help input
       tomorrow = Date.today + 1
       log 'Usage: translink scrape <DATE> [URI]'
+      log '       translink version'
       log ''
       log 'Examples:'
       log "    translink scrape #{tomorrow}"
@@ -38,6 +39,10 @@ module Translink
         crawler = __crawler__.new 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables'
         crawler.crawl date
       end
+    end
+
+    def version input
+      log VERSION
     end
 
     def log message

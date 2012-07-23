@@ -55,6 +55,11 @@ class CLITtest < MiniTest::Unit::TestCase
     assert File.exists?(file), 'Expected file to exist.'
   end
 
+  def test_version_command
+    @cli.run 'version'
+    assert_match Translink::VERSION, @out.string
+  end
+
   def test_execute_scrape_command_without_date_executes_help_command
     @cli.run 'scrape'
     assert_includes @out.string, 'Usage'

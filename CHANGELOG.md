@@ -1,5 +1,9 @@
 # Changelog
 
+## Current
+
+* Add version command. Prints the current version.
+
 ## 2012-07-21 / v2.0.0
 
 * Add headsign column to trips table.
