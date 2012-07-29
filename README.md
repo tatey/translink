@@ -2,13 +2,13 @@
 
 [![Build Status](https://secure.travis-ci.org/tatey/translink.png)](http://travis-ci.org/tatey/translink)
 
-[Translink](http://translink.com.au/) (Organisation) coordinates public transport operations in
+[TransLink](http://translink.com.au/) (Organisation) coordinates public transport operations in
 South-East Queensland. Their website has an abundance of data with no easy way for a developer
 to query it.
 
 Translink (Program) scrapes bus routes, trips, stops and times into a relational database.
 The schema is a subset of the [General Transit Feed Specification](https://developers.google.com/transit/gtfs/reference).
-Data is sourced from the [Translink website](http://translink.com.au/).You should be 
+Data is sourced from the [TransLink website](http://translink.com.au/).You should be
 aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
 I created Translink (Program) to solve my problem of getting lost on new routes. With this data I 
