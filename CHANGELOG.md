@@ -2,6 +2,7 @@
 
 ## Current
 
+* Update Mechanize to 2.5.1.
 * Add version command. Prints the current version.
 
 ## 2012-07-21 / v2.0.0
