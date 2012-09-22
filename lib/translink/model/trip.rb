@@ -40,10 +40,10 @@ module Translink
       # @param trip_page [Trip::Page] HTML page that represents the trip.
       # @return [void]
       def trip_page! trip_page
-       self.direction  = trip_page.direction
-       self.headsign   = trip_page.headsign
-       self.service_id = trip_page.service_id
-       self.trip_id    = trip_page.trip_id
+        self.direction  = trip_page.direction
+        self.headsign   = trip_page.headsign
+        self.service_id = trip_page.service_id
+        self.trip_id    = trip_page.trip_id
       end
     end
   end
