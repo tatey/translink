@@ -32,10 +32,6 @@ class Page::TripRequestTest < MiniTest::Unit::TestCase
     Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8550/1712196/2012-05-31', Date.today, Direction::REGULAR)
   end
 
-  def test_service_id
-    assert_equal '1712196', stub_trip.service_id
-  end
-
   def test_stop_times
     stop_page1 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Queen Street station, platform A6'; s.stop_id = '001002'; s.stop_lat = '-27.470677'; s.stop_lon = '153.024747' }
     stop_page2 = Page::Trip::Stop.new.tap { |s| s.stop_name = 'Illaweena St at Waterstone'; s.stop_id = '010764'; s.stop_lat = '-27.639463'; s.stop_lon = '153.052551' }
@@ -52,6 +48,6 @@ class Page::TripRequestTest < MiniTest::Unit::TestCase
   end
 
   def test_trip_id
-    assert_equal '8550', stub_trip.trip_id
+    assert_equal '1712196', stub_trip.trip_id
   end
 end

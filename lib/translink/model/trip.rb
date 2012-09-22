@@ -5,11 +5,14 @@ module Translink
 
       storage_names[:default] = 'trips'
 
-      property :id,         Serial
-      property :direction,  Integer # Travel in one direction (Regular) or the opposite (Goofy) direction.
-      property :headsign,   String  # Name of the direction. Eg "Inbound".
-      property :service_id, Integer # Service belongs to a trip. Assigned by Translink.
-      property :trip_id,    Integer # Unique ID assigned by Translink.
+      # Primary key. Unique ID assigned by Translink.
+      property :id, Serial, :field => 'trip_id'
+
+      # Travel in one direction (Regular) or the opposite (Goofy) direction.
+      property :direction, Integer
+
+      # Name of the direction. Eg "Inbound".
+      property :headsign, String
 
       belongs_to :route
 
@@ -40,10 +43,9 @@ module Translink
       # @param trip_page [Trip::Page] HTML page that represents the trip.
       # @return [void]
       def trip_page! trip_page
+        self.id         = trip_page.trip_id
         self.direction  = trip_page.direction
         self.headsign   = trip_page.headsign
-        self.service_id = trip_page.service_id
-        self.trip_id    = trip_page.trip_id
       end
     end
   end

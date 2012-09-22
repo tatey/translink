@@ -47,11 +47,25 @@ module Translink
       headsigns.index anchor.ancestors('div.route-timetable').search('h3').first.text.downcase
     end
 
+    # Get the date of the trip.
+    #
+    # How:
+    #   "/travel-information/network-information/service-information/outbound/9792/2173523/2012-09-24"
+    #   ... becomes
+    #   DateTime.new('2012-09-24')
+    #
+    # @return [DateTime]
+    def date_from_anchor anchor
+      DateTime.parse anchor[:href].match(/[^\/]+$/)[0]
+    end
+
     # Builds an array of trip pages.
     #
     # @return [Array<Page::Trip>]
     def trip_pages
-      page.search('a.map-link-top').map do |anchor|
+      page.search('a.map-link-top').select do |anchor|
+        date_from_anchor(anchor) == date
+      end.map do |anchor|
         Trip.new url_from_href(anchor[:href]), date, direction_from_anchor(anchor)
       end
     end

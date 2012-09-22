@@ -5,12 +5,19 @@ module Translink
 
       storage_names[:default] = 'routes'
 
-      property :id,         Serial
-      property :short_name, String  # Route code. Eg "130".
-      property :long_name,  String  # Suburbs serviced or destination. Eg "City, Sunnybank, Algester". 
-      property :route_type, Integer # Type of transporation. Eg "Bus".
+      # Primary key. Same as +short_name+ because that's the only unique ID we've got.
+      property :id, String, :field => 'route_id', :key => true, :unique => true, :unique_index => true
 
-      has n, :trips
+      # Route code. Eg "130".
+      property :short_name, String
+
+      # Suburbs serviced or destination. Eg "City, Sunnybank, Algester".
+      property :long_name, String
+
+      # Type of transporation. Eg "Bus".
+      property :route_type, Integer
+
+      has n, :trips, :child_key => [:route_id]
 
       # Route model for the given +route_page+. Will create the route if it
       # doesn't exist.
@@ -18,7 +25,8 @@ module Translink
       # @param route_pate [Page::Route] HTML page that represents the route.
       # @return [Model::Route] DataMapper record.
       def self.find_or_add_route_from_route_page route_page
-        first_or_create :short_name => route_page.short_name,
+        first_or_create :id         => route_page.short_name,
+                        :short_name => route_page.short_name,
                         :long_name  => route_page.long_name,
                         :route_type => route_page.route_type
       end

@@ -87,14 +87,6 @@ module Translink
     #
     # @return [String]
     def trip_id
-      url.to_s =~ /information\/[a-z]+\/([^\/]+)/
-      $1
-    end
-
-    # Get the trip's service ID.
-    #
-    # @return [String]
-    def service_id
       url.to_s =~ /information\/[a-z]+\/[^\/]+\/([^\/]+)/
       $1
     end

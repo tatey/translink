@@ -15,8 +15,8 @@ class Model::RouteTest < MiniTest::Unit::TestCase
 
   def test_add_trip_from_trip_page
     DB.context 'sqlite::memory:', :migrate => true do
-      trip_page   = OpenStruct.new :direction => Direction::REGULAR, :headsign => 'outbound', :service_id => 8550, :trip_id => 1712196
-      route_model = Model::Route.new
+      trip_page   = OpenStruct.new :direction => Direction::REGULAR, :headsign => 'outbound', :trip_id => 1712196
+      route_model = Model::Route.create :id => '130', :short_name => '130', :long_name => 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson', :route_type => 0
       trip_model  = route_model.add_trip_from_trip_page trip_page
       assert trip_model.saved?
     end

@@ -4,13 +4,23 @@ class Page::RouteTest < MiniTest::Unit::TestCase
   attr_accessor :route
 
   def setup
-    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-21').
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-09-24').
       to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    @route = Page::Route.new 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-06-21', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson'
+    @route = Page::Route.new 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-09-24', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson'
   end
 
   def test_date
-    assert_equal DateTime.parse('21/06/2012 12:00:00 AM'), route.date
+    assert_equal DateTime.parse('24/09/2012 12:00:00 AM'), route.date
+  end
+
+  def test_date_from_anchor
+    anchor = route.page.search('a.map-link-top').first
+    assert_equal DateTime.parse('23/09/2012 12:00:00 AM'), route.date_from_anchor(anchor)
+  end
+
+  def test_direction_from_anchor
+    anchor = route.page.search('a.map-link-top').first
+    assert_equal Direction::REGULAR, route.direction_from_anchor(anchor)
   end
 
   def test_headsigns
@@ -25,10 +35,10 @@ class Page::RouteTest < MiniTest::Unit::TestCase
     trip_pages = route.trip_pages
     trip1 = trip_pages.first
     trip2 = trip_pages.last
-    assert_equal 'http://jp.translink.com.au/travel-information/network-information/service-information/outbound/8904/1891449/2012-06-20', trip1.url.to_s
+    assert_equal 'http://jp.translink.com.au/travel-information/network-information/service-information/outbound/9792/2170894/2012-09-24', trip1.url.to_s
     assert_equal route.date.to_date, trip1.date
     assert_equal Direction::REGULAR, trip1.direction
-    assert_equal 'http://jp.translink.com.au/travel-information/network-information/service-information/inbound/8904/1881543/2012-06-22', trip2.url.to_s
+    assert_equal 'http://jp.translink.com.au/travel-information/network-information/service-information/inbound/9792/2180194/2012-09-24', trip2.url.to_s
     assert_equal route.date.to_date, trip2.date
     assert_equal Direction::GOOFY, trip2.direction
   end
