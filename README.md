@@ -59,6 +59,11 @@ defined by Google for [Google Transit](https://developers.google.com/transit/goo
 
 ![Class Analysis Diagram](https://github.com/tatey/translink/raw/master/doc/schema.png)
 
+### Deviations from the General Transit Feed Specification
+
+* `trips.service_id` is omitted. This cannot be extracted from the dataset.
+* `routes.agency_id` is omitted. There is only one agent. The agent is Brisbane Transport.
+
 ## Contributing
 
 If you would like to help, please browse the [issues](https://github.com/tatey/translink/issues).
