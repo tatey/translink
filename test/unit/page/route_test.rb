@@ -13,11 +13,6 @@ class Page::RouteTest < MiniTest::Unit::TestCase
     assert_equal DateTime.parse('24/09/2012 12:00:00 AM'), route.date
   end
 
-  def test_date_from_anchor
-    anchor = route.page.search('a.map-link-top').first
-    assert_equal DateTime.parse('23/09/2012 12:00:00 AM'), route.date_from_anchor(anchor)
-  end
-
   def test_direction_from_anchor
     anchor = route.page.search('a.map-link-top').first
     assert_equal Direction::REGULAR, route.direction_from_anchor(anchor)
@@ -72,5 +67,27 @@ class Page::RouteTypeTest < MiniTest::Unit::TestCase
     assert_raises Page::Route::UnknownRouteTypeError do
       Page::Route.new('http://foo', 'City').route_type
     end
+  end
+end
+
+class Page::DateFromAnchorTest < MiniTest::Unit::TestCase
+  attr_accessor :route
+
+  def setup
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/120/2012-09-24').
+      to_return(:status => 200, :body => fixture('verbatim/route/date_from_anchor.html'), :headers => {'Content-Type' => 'text/html'})
+    @route = Page::Route.new 'http://jp.translink.com.au/travel-information/network-information/buses/120/2012-09-24', 'City, SthBank, Buranda, Salisbury, Griffith Uni, Garden City'
+  end
+
+  def test_unparsable_date
+    anchor = route.page.search('a.map-link-top')[0]
+    assert_equal DateTime.parse('01/01/1970 12:00:00 AM'), route.date_from_anchor(anchor)
+    anchor = route.page.search('a.map-link-top')[1]
+    assert_equal DateTime.parse('01/01/1970 12:00:00 AM'), route.date_from_anchor(anchor)
+  end
+
+  def test_parsable_date
+    anchor = route.page.search('a.map-link-top')[2]
+    assert_equal DateTime.parse('24/09/2012 12:00:00 AM'), route.date_from_anchor(anchor)
   end
 end

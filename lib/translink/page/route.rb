@@ -64,16 +64,24 @@ module Translink
       headsigns.index anchor.ancestors('div.route-timetable').search('h3').first.text.downcase
     end
 
-    # Get the date of the trip.
+    # Get the date of the trip. If the trip does not have a date, the UNIX
+    # epoc is returned.
     #
-    # How:
+    # Examples:
+    #
     #   "/travel-information/network-information/service-information/outbound/9792/2173523/2012-09-24"
     #   ... becomes
     #   DateTime.new('2012-09-24')
     #
+    #   "/travel-information/network-information/service-information/outbound/9792/2173523"
+    #   ... becomes
+    #   DateTime.new('1970-01-01')
+    #
     # @return [DateTime]
     def date_from_anchor anchor
-      DateTime.parse anchor[:href].match(/[^\/]+$/)[0]
+      match = anchor[:href].match /\d{4}-\d{2}-\d{2}$/
+      date  = match ? match[0] : '1970-01-01'
+      DateTime.parse date
     end
 
     # Builds an array of trip pages.
