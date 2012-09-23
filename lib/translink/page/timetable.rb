@@ -2,12 +2,18 @@ module Translink
   class Page::Timetable < Page
     # Builds an unique array of route pages.
     #
+    # @param url [URI] Omit routes before the route with +url+.
     # @return [Array<Page::Route>]
-    def route_pages
-      page.search('table tr td:last-child a').reduce(Array.new) do |routes, anchor|
+    def route_pages url = nil
+      routes = page.search('table tr td:last-child a').reduce(Array.new) do |routes, anchor|
         route     = Route.new url_from_href(anchor['href']), anchor.text
         duplicate = routes.find { |duplicate| duplicate.url == route.url }
         routes << route unless duplicate
+        routes
+      end
+      if url
+        routes.drop_while { |route| route.url != url }
+      else
         routes
       end
     end
