@@ -5,7 +5,7 @@ module Translink
 
       storage_names[:default] = 'stop_times'
 
-      property :arrival_time,  String
+      property :arrival_time,  String,  :key => true
       property :stop_sequence, Integer
       property :stop_id,       String,  :key => true
       property :trip_id,       Integer, :key => true

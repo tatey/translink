@@ -30,7 +30,7 @@ module Translink
               "stop_sequence" INTEGER NOT NULL,
               "stop_id" TEXT NOT NULL,
               "trip_id" INTEGER NOT NULL,
-              PRIMARY KEY ("stop_id", "trip_id")
+              PRIMARY KEY ("arrival_time", "stop_id", "trip_id")
             );
 
             DROP TABLE IF EXISTS "stops";
