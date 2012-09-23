@@ -17,6 +17,15 @@ class Page::TimetableTest < MiniTest::Unit::TestCase
     assert_equal 'Coomera stn, Dreamworld, Movieworld, Wet\'N Wild, H\'vale stn', route_pages.last.long_name
   end
 
+  def test_route_pages_are_unique
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables').
+      to_return(:status => 200, :body => fixture('verbatim/timetable/duplicate_routes.html'), :headers => {'Content-Type' => 'text/html'})
+    timetable_page = Page::Timetable.new('http://jp.translink.com.au/travel-information/network-information/buses/all-timetables')
+    route_pages    = timetable_page.route_pages
+    assert_equal 440, route_pages.size
+    assert_equal 1, route_pages.select { |route_page| route_page.url.to_s == 'http://jp.translink.com.au/travel-information/network-information/buses/LOOP/2012-09-24' }.size
+  end
+
   def test_timetable_page
     stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables').
       to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
