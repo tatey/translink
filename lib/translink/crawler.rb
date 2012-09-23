@@ -32,6 +32,7 @@ module Translink
       end
     rescue => exception
       out.puts "Skipping route page (#{route_page.url}) because of #{exception}"
+      out.puts exception.backtrace
     end
 
     def crawl_trip_page route_model, trip_page, retry_count = 0
@@ -45,7 +46,8 @@ module Translink
         out.puts "Skipping trip page (#{trip_page.url}) because of #{exception}"
       end
     rescue => exception
-      out.puts "Skipping trip page (#{route_page.url}) because of #{exception}"
+      out.puts "Skipping trip page (#{trip_page.url}) because of #{exception}"
+      out.puts exception.backtrace
     end
   end
 end
