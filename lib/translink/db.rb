@@ -19,7 +19,7 @@ module Translink
               "trip_id" INTEGER NOT NULL PRIMARY KEY UNIQUE,
               "direction" INTEGER NOT NULL,
               "headsign" TEXT NOT NULL,
-              "route_id" INTEGER NOT NULL
+              "route_id" TEXT NOT NULL
             );
 
             CREATE INDEX "index_trips_on_route_id" ON "trips" ("route_id");
