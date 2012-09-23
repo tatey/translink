@@ -51,3 +51,14 @@ class Page::TripRequestTest < MiniTest::Unit::TestCase
     assert_equal '1712196', stub_trip.trip_id
   end
 end
+
+class Page::TripDuplicateStopTimesTest < MiniTest::Unit::TestCase
+  def test_stop_times_are_unique
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/service-information/counterclockwise/9792/2171146/2012-09-24').
+      to_return(:status => 200, :body => fixture('verbatim/trip/duplicate_stop_times.html'), :headers => {'Content-Type' => 'text/html'})
+    trip = Page::Trip.new('http://jp.translink.com.au/travel-information/network-information/service-information/counterclockwise/9792/2171146/2012-09-24', Date.parse('2012-09-24'), Direction::REGULAR)
+    stop_times = trip.stop_times
+    assert_equal 10, stop_times.size
+    assert_equal 1, stop_times.select { |stop_time| stop_time.stop_page.stop_id == '00094A' }.size
+  end
+end

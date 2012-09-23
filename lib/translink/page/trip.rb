@@ -35,13 +35,6 @@ module Translink
       attr_accessor :stop_page     # [Page::Trip::Stop] Stop associated with the +arrival_time+.
       attr_accessor :stop_sequence # [Integer] Order in which this stop is visited in the trip.
 
-      # Creates a new stop time.
-      #
-      # @param stop_sequence [Integer] Order in which this stop is visited.
-      def initialize stop_sequence
-        @stop_sequence = stop_sequence
-      end
-
       # Time vehicle starts from the +stop+. Translink doesn't provide an
       # explicit +departure_time+ so we use the +arrival_time+.
       #
@@ -91,12 +84,21 @@ module Translink
       $1
     end
 
-    # Builds an array of stop times.
+    # Builds an unique array of stop times.
     #
     # @return [Array<Page::Trip::StopTime>]
     def stop_times
-      page.search('table#trip-details tbody tr').each_with_index.map do |table_row, index|
-        StopTime.new(index).html! table_row
+      page.search('table#trip-details tbody tr').reduce(Array.new) do |stop_times, table_row|
+        stop_time = StopTime.new.html! table_row
+        duplicate = stop_times.find do |duplicate|
+          duplicate.stop_page.stop_id == stop_time.stop_page.stop_id &&
+          duplicate.arrival_time == stop_time.arrival_time
+        end
+        stop_times << stop_time unless duplicate
+        stop_times
+      end.each_with_index.map do |stop_time, index|
+        stop_time.stop_sequence = index
+        stop_time
       end
     end
   end
