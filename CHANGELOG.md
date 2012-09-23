@@ -16,6 +16,7 @@
 * Some routes and stop times have duplicates. Only persist unique sets.
 * Add exception handling. Retry HTTP requests with bad responses.
 * Enforce integiry with foreign key constraints.
+* Resume scraping from a specific route.
 
 ## 2012-07-21 / v2.0.0
 

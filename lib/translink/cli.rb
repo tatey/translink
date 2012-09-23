@@ -1,6 +1,7 @@
 module Translink
   class CLI
     RUNNABLE = ['help', 'scrape', 'version']
+    URL      = 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables'
 
     attr_accessor :out, :pwd, :__crawler__
 
@@ -23,21 +24,35 @@ module Translink
 
     def help input
       tomorrow = Date.today + 1
-      log 'Usage: translink scrape <DATE> [URI]'
+      log 'Usage: translink scrape <DATE> [DB_PATH] [FROM_ROUTE_URL]'
       log '       translink version'
       log ''
       log 'Examples:'
       log "    translink scrape #{tomorrow}"
       log "    translink scrape #{tomorrow} sqlite://~/Desktop/#{tomorrow}.sqlite3"
+      log "    translink scrape #{tomorrow} sqlite://~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435"
     end
 
     def scrape input
-      return help nil unless input =~ /^(\d{4}-\d{2}-\d{2})(\s+--uri="?(.+)"?)?$/
-      date = Date.parse $1
-      uri  = $3 || 'sqlite://' + File.join(pwd, "#{date}.sqlite3")
-      DB.context uri, :migrate => true do
-        crawler = __crawler__.new 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables'
-        crawler.crawl date
+      args = (input || '').split /\s/
+      case args.size
+      when 1
+        date    = Date.parse args[0]
+        db_path = File.join(pwd, "#{date}.sqlite3")
+      when 2
+        date    = Date.parse args[0]
+        db_path = File.expand_path args[1]
+      when 3
+        date           = Date.parse args[0]
+        db_path        = File.expand_path args[1]
+        from_route_url = URI.parse args[2]
+      else
+        help nil
+        return
+      end
+      DB.context "sqlite://#{db_path}", :migrate => !File.exists?(db_path) do
+        crawler = __crawler__.new URL
+        crawler.crawl date, from_route_url
       end
     end
 
