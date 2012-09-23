@@ -41,7 +41,7 @@ module Translink
       def initialize stop_sequence
         @stop_sequence = stop_sequence
       end
-      
+
       # Time vehicle starts from the +stop+. Translink doesn't provide an
       # explicit +departure_time+ so we use the +arrival_time+.
       #
@@ -66,7 +66,7 @@ module Translink
                              # or the opposite (Goofy) direction.
 
     # Creates a new trip.
-    # 
+    #
     # @param url [String] URL to fetch the page from.
     # @param date [Date] Date the trip runs on.
     def initialize url, date, direction
