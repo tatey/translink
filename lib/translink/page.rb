@@ -1,5 +1,8 @@
 module Translink
   class Page
+    class UnexpectedParserError < StandardError
+    end
+
     USER_AGENT = "Mozilla/5.0 (Translink/#{VERSION} Ruby/#{RUBY_VERSION} (https://github.com/tatey/translink))"
 
     attr_accessor :agent, :page, :url
@@ -10,7 +13,14 @@ module Translink
     end
 
     def page
-      @page ||= agent.get url.to_s
+      @page ||= begin
+        page = agent.get url.to_s
+        if page.instance_of? Mechanize::Page
+          page
+        else
+          raise UnexpectedParserError, "Expected instance of Mechanize::Page. Got #{page.class}"
+        end
+      end
     end
 
   protected

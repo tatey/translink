@@ -23,7 +23,7 @@ module Translink
       route_page.trip_pages.each do |trip_page|
         crawl_trip_page route_model, trip_page
       end
-    rescue Mechanize::ResponseCodeError => exception
+    rescue Mechanize::ResponseCodeError, Page::UnexpectedParserError => exception
       if retry_count <= MAX_RETRY_COUNT
         sleep SLEEP_DURATION * retry_count
         crawl_route_page route_page, retry_count + 1
@@ -35,7 +35,7 @@ module Translink
     def crawl_trip_page route_model, trip_page, retry_count = 0
       trip_model = route_model.add_trip_from_trip_page trip_page
       trip_model.add_stop_times_from_stop_time_pages trip_page.stop_times
-    rescue Mechanize::ResponseCodeError => exception
+    rescue Mechanize::ResponseCodeError, Page::UnexpectedParserError => exception
       if retry_count <= MAX_RETRY_COUNT
         sleep SLEEP_DURATION * retry_count
         crawl_trip_page route_model, trip_page, retry_count + 1
