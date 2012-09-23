@@ -14,6 +14,7 @@
 * Schema is created with SQL as opposed to DM's automatic migrations.
 * Change short name for some routes. CGLD -> CityGlider, LOOP -> City Loop and SHLP -> Spring Hill City Loop.
 * Some routes and stop times have duplicates. Only persist unique sets.
+* Add exception handling. Retry HTTP requests with bad responses.
 
 ## 2012-07-21 / v2.0.0
 
