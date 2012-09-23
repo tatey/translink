@@ -6,6 +6,7 @@ class Model::RouteTest < MiniTest::Unit::TestCase
       route_page = MiniTest::Mock.new
       route_page.expect :short_name, '130'
       route_page.expect :long_name, 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson'
+      route_page.expect :route_id, '130'
       route_page.expect :route_type, 0
       assert_equal 0, Model::Route.count
       assert_equal Model::Route.find_or_add_route_from_route_page(route_page), Model::Route.find_or_add_route_from_route_page(route_page)

@@ -27,6 +27,10 @@ class Page::RouteTest < MiniTest::Unit::TestCase
     assert_equal ['outbound', 'inbound'], route.headsigns
   end
 
+  def test_route_id
+    assert_equal '130', route.route_id
+  end
+
   def test_short_name
     assert_equal '130', route.short_name
   end

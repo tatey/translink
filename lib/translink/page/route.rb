@@ -16,11 +16,28 @@ module Translink
       @long_name = long_name
     end
 
+    # Get the route's unique ID assigned by Translink. This is the same
+    # as the +short_name+.
+    #
+    # @return [String]
+    def route_id
+      @route_id ||= page.search('div#headingBar h1').first.text.sub('Route ', '')
+    end
+
     # Gets the route's code.
     #
     # @return [String]
     def short_name
-      page.search('div#headingBar h1').first.text.sub('Route ', '')
+      case route_id
+      when 'CGLD'
+        'CityGlider'
+      when 'LOOP'
+        'City Loop'
+      when 'SHLP'
+        'Spring Hill City Loop'
+      else
+        route_id
+      end
     end
 
     # Get the date this route is running. Trip pages are bound by this
