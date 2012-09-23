@@ -9,9 +9,11 @@
 * Rename routes.id -> routes.route_id. Type changed to TEXT. Value is short name provided by Translink.
 * Rename trips.id -> trips.trip_id. Value is trip id provided by Translink.
 * Rename stops.id -> stops.stop_id. Type changed to TEXT. Value is stop id provided by Translink.
-* Primary key on stop_times is now composite of stop_times.trip_id and stop_times.stop_id.
+* Primary key on stop_times is now composite of stop_times.arrival_time, stop_times.trip_id and stop_times.stop_id.
 * Change Page::Route#trip_pages to only return trips for the given date.
 * Schema is created with SQL as opposed to DM's automatic migrations.
+* Change short name for some routes. CGLD -> CityGlider, LOOP -> City Loop and SHLP -> Spring Hill City Loop.
+* Some routes and stop times have duplicates. Only persist unique sets.
 
 ## 2012-07-21 / v2.0.0
 
