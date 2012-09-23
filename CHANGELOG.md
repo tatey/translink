@@ -15,7 +15,7 @@
 * Change short name for some routes. CGLD -> CityGlider, LOOP -> City Loop and SHLP -> Spring Hill City Loop.
 * Some routes and stop times have duplicates. Only persist unique sets.
 * Add exception handling. Retry HTTP requests with bad responses. Skip and output page if it cannot be resolved.
-* Enforce integiry with foreign key constraints.
+* Enforce integrity with foreign key constraints.
 * Resume scraping from a specific route.
 
 ## 2012-07-21 / v2.0.0
