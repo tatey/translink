@@ -36,6 +36,16 @@ class Page::TimetableTest < MiniTest::Unit::TestCase
     assert_equal url, route_pages.first.url
   end
 
+  def test_route_pages_limited_by_step
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables').
+      to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
+    url            = URI.parse 'http://jp.translink.com.au/travel-information/network-information/buses/10'
+    timetable_page = Page::Timetable.new 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables'
+    route_pages    = timetable_page.route_pages url, 0
+    assert_equal 1, route_pages.size
+    assert_equal url, route_pages.first.url
+  end
+
   def test_timetable_page
     stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables').
       to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})

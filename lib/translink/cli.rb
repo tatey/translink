@@ -24,13 +24,14 @@ module Translink
 
     def help input
       tomorrow = Date.today + 1
-      log 'Usage: translink scrape <DATE> [DB_PATH] [FROM_ROUTE_URL]'
+      log 'Usage: translink scrape <DATE> [DB_PATH] [FROM_ROUTE_URL] [STEP]'
       log '       translink version'
       log ''
       log 'Examples:'
       log "    translink scrape #{tomorrow}"
       log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3"
       log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435"
+      log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435 0"
     end
 
     def scrape input
@@ -46,13 +47,18 @@ module Translink
         date           = Date.parse args[0]
         db_path        = File.expand_path args[1]
         from_route_url = URI.parse args[2]
+      when 4
+        date           = Date.parse args[0]
+        db_path        = File.expand_path args[1]
+        from_route_url = URI.parse args[2]
+        step           = args[3]
       else
         help nil
         return
       end
       DB.context "sqlite://#{db_path}", :migrate => !File.exists?(db_path) do
         crawler = __crawler__.new URL
-        crawler.crawl date, from_route_url
+        crawler.crawl date, from_route_url, step
       end
     end
 

@@ -11,9 +11,9 @@ module Translink
       @out = $stdout
     end
 
-    def crawl date, from_route_url = nil
+    def crawl date, from_route_url = nil, step = nil
       timetable_page = Page::Timetable.new(url.to_s).timetable_page date
-      timetable_page.route_pages(from_route_url).each do |route_page|
+      timetable_page.route_pages(from_route_url, step).each do |route_page|
         crawl_route_page route_page
       end
     end

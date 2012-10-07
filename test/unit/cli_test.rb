@@ -8,7 +8,7 @@ class CLITtest < MiniTest::Unit::TestCase
 
     end
 
-    def crawl date, from_route_url = nil
+    def crawl date, from_route_url = nil, step = nil
 
     end
   end
@@ -59,6 +59,13 @@ class CLITtest < MiniTest::Unit::TestCase
     file = File.join TMPDIR, "test_db_path_from_route_url_#{Time.now.to_i}.sqlite3"
     refute File.exists?(file), 'Expected file not to exist.'
     @cli.run "scrape 2011-11-27 #{file} http://localhost"
+    assert File.exists?(file), 'Expected file to exist.'
+  end
+
+  def test_execute_scrape_command_with_date_db_path_from_route_url_and_step
+    file = File.join TMPDIR, "test_db_path_from_route_url_step_#{Time.now.to_i}.sqlite3"
+    refute File.exists?(file), 'Expected file not to exist.'
+    @cli.run "scrape 2011-11-27 #{file} http://localhost 0"
     assert File.exists?(file), 'Expected file to exist.'
   end
 

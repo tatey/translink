@@ -16,7 +16,7 @@
 * Some routes and stop times have duplicates. Only persist unique sets.
 * Add exception handling. Retry HTTP requests with bad responses. Skip and output page if it cannot be resolved.
 * Enforce integrity with foreign key constraints.
-* Resume scraping from a specific route.
+* Resume scraping from a specific route and limit number of subsequent routes.
 
 ## 2012-07-21 / v2.0.0
 
