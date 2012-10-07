@@ -29,8 +29,8 @@ module Translink
       log ''
       log 'Examples:'
       log "    translink scrape #{tomorrow}"
-      log "    translink scrape #{tomorrow} sqlite://~/Desktop/#{tomorrow}.sqlite3"
-      log "    translink scrape #{tomorrow} sqlite://~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435"
+      log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3"
+      log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435"
     end
 
     def scrape input
