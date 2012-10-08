@@ -51,7 +51,7 @@ module Translink
         date           = Date.parse args[0]
         db_path        = File.expand_path args[1]
         from_route_url = URI.parse args[2]
-        step           = args[3]
+        step           = args[3].to_i
       else
         help nil
         return
