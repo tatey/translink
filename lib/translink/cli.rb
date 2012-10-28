@@ -31,7 +31,7 @@ module Translink
       log "    translink scrape #{tomorrow}"
       log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3"
       log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435"
-      log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435 0"
+      log "    translink scrape #{tomorrow} ~/Desktop/#{tomorrow}.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435/#{tomorrow} 0"
     end
 
     def scrape input

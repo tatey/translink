@@ -32,24 +32,31 @@ them into a SQLite database named "2011-11-24.sqlite3" in the current working di
 
 Change the path to the SQLite database.
 
-    $ translink scrape 2011-11-24 --uri=sqlite:///Users/Tate/Downloads/translink.sqlite3
+    $ translink scrape 2011-11-24 ~/Downloads/translink.sqlite3
+
+Get a specific route.
+
+    $ translink scrape 2011-11-24 ~/Desktop/translink.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435/2011-11-24 0"
 
 ## Queries
 
 Stops the 130 visits on the outbound trip.
 
-    SELECT DISTINCT(stops.id), stops.stop_name, stops.stop_lat, stops.stop_lon FROM routes
-    INNER JOIN trips ON trips.route_id = routes.id
-    INNER JOIN stop_times ON stop_times.trip_id = trips.id
-    INNER JOIN stops ON stop_times.stop_id = stops.id
-    WHERE routes.short_name = '130' AND trips.direction = 'outbound';
+    SELECT stops.*, stop_times.*
+    FROM routes
+    INNER JOIN trips ON trips.route_id = routes.route_id
+    INNER JOIN stop_times ON stop_times.trip_id = trips.trip_id
+    INNER JOIN stops ON stops.stop_id = stop_times.stop_id
+    WHERE routes.short_name = '130' AND trips.headsign = 'outbound'
+    GROUP BY stops.stop_id
+    ORDER BY stop_times.stop_sequence;
 
 Routes that visit the 'Calam Rd near Honeywood St' stop.
 
-    SELECT DISTINCT(routes.id), short_name FROM stops
-    INNER JOIN stop_times ON stop_times.stop_id = stops.id
-    INNER JOIN trips ON stop_times.trip_id = trips.id
-    INNER JOIN routes ON routes.id = trips.route_id
+    SELECT DISTINCT(routes.short_name) FROM stops
+    INNER JOIN stop_times ON stop_times.stop_id = stops.stop_id
+    INNER JOIN trips ON stop_times.trip_id = trips.trip_id
+    INNER JOIN routes ON routes.route_id = trips.route_id
     WHERE stops.stop_name = 'Calam Rd near Honeywood St';
 
 ## Schema
@@ -81,4 +88,4 @@ If you would like to help, please browse the [issues](https://github.com/tatey/t
 Doing something interesting with this data? Shoot me an [e-mail](mailto:tate@tatey.com). I'd love to see how
 this is being used. An acknowledgement of this project is appreciated, but not required.
 
-Copyright © 2011 Tate Johnson. Released under the MIT license. See LICENSE.
+Copyright © 2011-2012 Tate Johnson. Released under the MIT license. See LICENSE.
