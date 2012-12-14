@@ -11,8 +11,7 @@ The schema is a subset of the [General Transit Feed Specification](https://devel
 Data is sourced from the [TransLink website](http://translink.com.au/).You should be
 aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
-I created Translink (Program) to solve my problem of getting lost on new routes. With this data I 
-have been working on an app for iOS called [Next Stop](http://nextstop.me).
+Translink (Program) was created to provide data for my iOS app, [Next Stop](http://nextstop.me).
 
 ## Installation
 
