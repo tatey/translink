@@ -1,6 +1,6 @@
 # Changelog
 
-## Current
+## 2012-12-14 / v3.0.0
 
 * Update Mechanize to 2.5.1.
 * Add version command. Prints the current version.
