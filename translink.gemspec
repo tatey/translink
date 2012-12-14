@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors              = ['Tate Johnson']
   s.email                = ['tate@tatey.com']
   s.homepage             = 'https://github.com/tatey/translink'
-  s.summary              = %q{Scrapes public transport data from Translink into GTFS}
-  s.description          = %q{Scrapes public transport data from Translink into GTFS}
+  s.summary              = %q{Scrapes public transport data from TransLink into GTFS}
+  s.description          = %q{Scrapes public transport data from TransLink into GTFS}
 
   s.rubyforge_project = 'translink'
 
