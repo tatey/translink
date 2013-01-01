@@ -1,7 +1,7 @@
 require 'helper'
 
 class CLITtest < MiniTest::Unit::TestCase
-  TMPDIR = File.expand_path '../../../tmp', __FILE__
+  TMPDIR = File.expand_path '../../tmp', __FILE__
 
   class Crawler
     def initialize url
