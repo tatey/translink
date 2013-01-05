@@ -26,6 +26,10 @@ class Page::Bus::RouteTest < MiniTest::Unit::TestCase
     assert_equal '130', route.route_id
   end
 
+  def test_route_type
+    assert_equal 3, route.route_type
+  end
+
   def test_short_name
     assert_equal '130', route.short_name
   end
@@ -47,26 +51,6 @@ class Page::Bus::RouteLongNameTest < MiniTest::Unit::TestCase
   def test_long_name
     route = Page::Bus::Route.new('http://local', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson')
     assert_equal 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson', route.long_name
-  end
-end
-
-class Page::Bus::RouteTypeTest < MiniTest::Unit::TestCase
-  def test_bus
-    assert_equal 3, Page::Bus::Route.new('http://jp.translink.com.au/travel-information/network-information/buses/all-timetables', 'City').route_type
-  end
-
-  def test_ferry
-    assert_equal 4, Page::Bus::Route.new('http://jp.translink.com.au/travel-information/network-information/ferries/all-timetables', 'City').route_type 
-  end
-
-  def test_train
-    assert_equal 0, Page::Bus::Route.new('http://jp.translink.com.au/travel-information/network-information/trains/richlands', 'City').route_type
-  end
-
-  def test_exception
-    assert_raises Page::Bus::Route::UnknownRouteTypeError do
-      Page::Bus::Route.new('http://foo', 'City').route_type
-    end
   end
 end
 

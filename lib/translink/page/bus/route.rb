@@ -1,10 +1,5 @@
 module Translink
   class Page::Bus::Route < Page
-    class UnknownRouteTypeError < StandardError
-    end
-
-    ROUTE_TYPES = {'buses' => 3, 'ferries' => 4, 'trains' => 0} # Maps to Google Transit route type.
-
     attr_reader :long_name # [String] Usually a list of suburbs.
 
     # Creates a new route.
@@ -95,14 +90,8 @@ module Translink
       end
     end
 
-    # Get the type of transportation used on the route.
-    #
-    # @return [Integer]
-    # @raise [UnknownRouteTypeError] if the route type is not defined in 
-    #   +ROUTE_TYPES+.
     def route_type
-      url.to_s =~ /(buses|ferries|trains)/
-      ROUTE_TYPES.fetch($1) { raise UnknownRouteTypeError }
+      3
     end
   end
 end
