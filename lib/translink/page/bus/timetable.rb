@@ -1,5 +1,9 @@
 module Translink
   class Page::Bus::Timetable < Page
+    def self.timetable_page url, date
+      new(url).timetable_page(date)
+    end
+
     # Builds an unique array of route pages.
     #
     # @param url [URI] Omit routes before the route with +url+.

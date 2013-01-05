@@ -1,6 +1,17 @@
 require 'helper'
 
-class Page::Bus::TimetableTest < MiniTest::Unit::TestCase
+class Page::Bus::TimetableClassTest < MiniTest::Unit::TestCase
+  def test_timetable_page_returns_new_instance
+    stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables').
+      to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
+    stub_request(:post, 'http://jp.translink.com.au/travel-information/network-information/timetables').
+      to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
+    timetable = Page::Bus::Timetable.timetable_page 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables', Date.parse('2012-06-04')
+    assert_equal 'http://jp.translink.com.au/travel-information/network-information/timetables', timetable.url.to_s
+  end
+end
+
+class Page::Bus::TimetableInstanceTest < MiniTest::Unit::TestCase
   def test_page
     stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/all-timetables').
       to_return(:status => 200, :body => fixture('verbatim/timetable.html'), :headers => {'Content-Type' => 'text/html'})
