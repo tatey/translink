@@ -1,6 +1,6 @@
 require 'helper'
 
-class Page::Train::TimetableClassTest < MiniTest::Unit::TestCase
+class Page::Train::TimetableConstructorTest < MiniTest::Unit::TestCase
   def test_timetable_page_returns_new_instance
     url  = 'http://local'
     date = Date.today
@@ -10,7 +10,7 @@ class Page::Train::TimetableClassTest < MiniTest::Unit::TestCase
   end
 end
 
-class Page::Train::TimetableInstanceTest < MiniTest::Unit::TestCase
+class Page::Train::TimetableRoutePagesTest < MiniTest::Unit::TestCase
   def setup
     url = 'http://jp.translink.com.au/travel-information/network-information/trains/all-timetables'
     stub_request(:get, url).
