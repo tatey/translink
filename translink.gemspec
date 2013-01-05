@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'dm-sqlite-adapter', '~> 1.2.0'
   s.add_runtime_dependency 'mechanize', '~> 2.5.1'
   s.add_development_dependency 'pry'
-  s.add_development_dependency 'rake', '~> 0.9.2'
+  s.add_development_dependency 'rake'
   s.add_development_dependency 'webmock', '~> 1.7.8'
 
   s.files         = `git ls-files`.split("\n")
