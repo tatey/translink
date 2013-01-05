@@ -1,5 +1,5 @@
 module Translink
-  class Page::Route < Page
+  class Page::Bus::Route < Page
     class UnknownRouteTypeError < StandardError
     end
 

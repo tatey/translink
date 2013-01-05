@@ -1,12 +1,12 @@
 require 'helper'
 
-class Page::RouteTest < MiniTest::Unit::TestCase
+class Page::Bus::RouteTest < MiniTest::Unit::TestCase
   attr_accessor :route
 
   def setup
     stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-09-24').
       to_return(:status => 200, :body => fixture('verbatim/route.html'), :headers => {'Content-Type' => 'text/html'})
-    @route = Page::Route.new 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-09-24', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson'
+    @route = Page::Bus::Route.new 'http://jp.translink.com.au/travel-information/network-information/buses/130/2012-09-24', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson'
   end
 
   def test_date
@@ -43,40 +43,40 @@ class Page::RouteTest < MiniTest::Unit::TestCase
   end
 end
 
-class Page::RouteLongNameTest < MiniTest::Unit::TestCase
+class Page::Bus::RouteLongNameTest < MiniTest::Unit::TestCase
   def test_long_name
-    route = Page::Route.new('http://local', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson')
+    route = Page::Bus::Route.new('http://local', 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson')
     assert_equal 'City, Griffith Uni, Sunnybank Hills, Algester, Parkinson', route.long_name
   end
 end
 
-class Page::RouteTypeTest < MiniTest::Unit::TestCase
+class Page::Bus::RouteTypeTest < MiniTest::Unit::TestCase
   def test_bus
-    assert_equal 3, Page::Route.new('http://jp.translink.com.au/travel-information/network-information/buses/all-timetables', 'City').route_type
+    assert_equal 3, Page::Bus::Route.new('http://jp.translink.com.au/travel-information/network-information/buses/all-timetables', 'City').route_type
   end
 
   def test_ferry
-    assert_equal 4, Page::Route.new('http://jp.translink.com.au/travel-information/network-information/ferries/all-timetables', 'City').route_type 
+    assert_equal 4, Page::Bus::Route.new('http://jp.translink.com.au/travel-information/network-information/ferries/all-timetables', 'City').route_type 
   end
 
   def test_train
-    assert_equal 0, Page::Route.new('http://jp.translink.com.au/travel-information/network-information/trains/richlands', 'City').route_type
+    assert_equal 0, Page::Bus::Route.new('http://jp.translink.com.au/travel-information/network-information/trains/richlands', 'City').route_type
   end
 
   def test_exception
-    assert_raises Page::Route::UnknownRouteTypeError do
-      Page::Route.new('http://foo', 'City').route_type
+    assert_raises Page::Bus::Route::UnknownRouteTypeError do
+      Page::Bus::Route.new('http://foo', 'City').route_type
     end
   end
 end
 
-class Page::DateFromAnchorTest < MiniTest::Unit::TestCase
+class Page::Bus::DateFromAnchorTest < MiniTest::Unit::TestCase
   attr_accessor :route
 
   def setup
     stub_request(:get, 'http://jp.translink.com.au/travel-information/network-information/buses/120/2012-09-24').
       to_return(:status => 200, :body => fixture('verbatim/route/date_from_anchor.html'), :headers => {'Content-Type' => 'text/html'})
-    @route = Page::Route.new 'http://jp.translink.com.au/travel-information/network-information/buses/120/2012-09-24', 'City, SthBank, Buranda, Salisbury, Griffith Uni, Garden City'
+    @route = Page::Bus::Route.new 'http://jp.translink.com.au/travel-information/network-information/buses/120/2012-09-24', 'City, SthBank, Buranda, Salisbury, Griffith Uni, Garden City'
   end
 
   def test_unparsable_date

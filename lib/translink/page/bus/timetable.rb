@@ -6,7 +6,7 @@ module Translink
     # @return [Array<Page::Bus::Route>]
     def route_pages url = nil, step = nil
       routes = page.search('table tr td:last-child a').reduce(Array.new) do |routes, anchor|
-        route     = Route.new url_from_href(anchor['href']), anchor.text
+        route     = Bus::Route.new url_from_href(anchor['href']), anchor.text
         duplicate = routes.find { |duplicate| duplicate.url == route.url }
         routes << route unless duplicate
         routes
