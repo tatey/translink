@@ -3,7 +3,13 @@ require 'dm-migrations'
 require 'mechanize'
 require 'uri'
 
+module Translink
+  module Crawler
+  end
+end
+
 require 'translink/version'
+require 'translink/crawlers/try'
 require 'translink/db'
 require 'translink/direction'
 require 'translink/model/route'
