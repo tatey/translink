@@ -12,7 +12,7 @@ module Translink
     end
 
     def crawl date, from_route_url = nil, step = nil
-      timetable_page = Page::Timetable.new(url.to_s).timetable_page date
+      timetable_page = Page::Bus::Timetable.new(url.to_s).timetable_page date
       timetable_page.route_pages(from_route_url, step).each do |route_page|
         crawl_route_page route_page
       end
