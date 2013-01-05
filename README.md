@@ -70,6 +70,20 @@ defined by Google for [Google Transit](https://developers.google.com/transit/goo
 * `trips.service_id` is omitted. This cannot be extracted from the dataset.
 * `routes.agency_id` is omitted. There is only one agent. The agent is Brisbane Transport.
 
+## Testing
+
+Run the entire test suite.
+
+    $ [bundle exec] rake
+
+Run a single test file.
+
+    $ ruby -Itest test/unit/page/train/timetable_test.rb
+
+Run a single test matching the name "size".
+
+    $ ruby -Itest test/unit/page/train/timetable_test.rb -n /size/
+
 ## Contributing
 
 If you would like to help, please browse the [issues](https://github.com/tatey/translink/issues).
