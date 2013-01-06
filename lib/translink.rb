@@ -3,14 +3,6 @@ require 'dm-migrations'
 require 'mechanize'
 require 'uri'
 
-module Translink
-  module Command
-  end
-
-  module Crawler
-  end
-end
-
 require 'translink/version'
 require 'translink/crawlers/try'
 require 'translink/crawlers/route_page'
@@ -23,10 +15,10 @@ require 'translink/commands/timetable'
 require 'translink/commands/version'
 require 'translink/db'
 require 'translink/direction'
-require 'translink/model/route'
-require 'translink/model/stop'
-require 'translink/model/stop_time'
-require 'translink/model/trip'
+require 'translink/models/route'
+require 'translink/models/stop'
+require 'translink/models/stop_time'
+require 'translink/models/trip'
 require 'translink/page'
 require 'translink/page/bus'
 require 'translink/page/bus/route'
