@@ -4,12 +4,23 @@ require 'mechanize'
 require 'uri'
 
 module Translink
+  module Command
+  end
+
   module Crawler
   end
 end
 
 require 'translink/version'
 require 'translink/crawlers/try'
+require 'translink/crawlers/route_page'
+require 'translink/crawlers/timetable_page'
+require 'translink/crawlers/trip_page'
+require 'translink/cli'
+require 'translink/commands/help'
+require 'translink/commands/route'
+require 'translink/commands/timetable'
+require 'translink/commands/version'
 require 'translink/db'
 require 'translink/direction'
 require 'translink/model/route'

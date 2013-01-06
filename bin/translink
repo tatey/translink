@@ -4,4 +4,4 @@ $: << File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'translink'
 
-Translink::CLI.new(Dir.pwd).run ARGV.join(' ')
+Translink::CLI.default.run ARGV
