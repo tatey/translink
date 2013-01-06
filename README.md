@@ -1,3 +1,7 @@
+# Caution
+
+This branch is a work-in-progress.
+
 # Translink
 
 [![Build Status](https://secure.travis-ci.org/tatey/translink.png)](http://travis-ci.org/tatey/translink)
@@ -6,12 +10,13 @@
 South-East Queensland. Their website has an abundance of data with no easy way for a developer
 to query it.
 
-Translink (Program) scrapes bus routes, trips, stops and times into a relational database.
-The schema is a subset of the [General Transit Feed Specification](https://developers.google.com/transit/gtfs/reference).
+Translink (Program) scrapes bus routes, train lines, trips, stops and times into a relational database.
+The schema is a subset of the [General Transit Feed Specification](https://developers.google.com/transit/gtfs/reference) (GTFS).
 Data is sourced from the [TransLink website](http://translink.com.au/).You should be
 aware their data is protected by [copyright](http://translink.com.au/site-information/legal/copyright).
 
-Translink (Program) was created to provide data for my iOS app, [Next Stop](http://nextstop.me).
+Translink (Program) was created to provide data for my iOS app, [Next Stop](http://nextstop.me). You can support this project
+by grabbing a copy.
 
 ## Installation
 
@@ -25,17 +30,13 @@ Translink is available as a gem. On UNIX-like platforms, install translink from 
 ## Usage
 
 Scrape all bus stops, routes and services for Thursday, 24 November 2011 saving
-them into a SQLite database named "2011-11-24.sqlite3" in the current working directory.
+them into a SQLite database named "gtfs.sqlite".
 
-    $ translink scrape 2011-11-24
-
-Change the path to the SQLite database.
-
-    $ translink scrape 2011-11-24 ~/Downloads/translink.sqlite3
+    $ translink timetable 2011-11-24 ~/gtfs.sqlite
 
 Get a specific route.
 
-    $ translink scrape 2011-11-24 ~/Desktop/translink.sqlite3 http://jp.translink.com.au/travel-information/network-information/buses/435/2011-11-24 0"
+    $ translink route train "Ferny Grove" http://jp.translink.com.au/travel-information/network-information/trains/ferny-grove/2013-01-07 ~/gtfs.sqlite
 
 ## Queries
 
@@ -67,6 +68,7 @@ defined by Google for [Google Transit](https://developers.google.com/transit/goo
 
 ### Deviations from the General Transit Feed Specification
 
+* `trips.direction_id` is `trips.direction`.
 * `trips.service_id` is omitted. This cannot be extracted from the dataset.
 * `routes.agency_id` is omitted. There is only one agent. The agent is Brisbane Transport.
 
@@ -78,11 +80,11 @@ Run the entire test suite.
 
 Run a single test file.
 
-    $ ruby -Itest test/unit/page/train/timetable_test.rb
+    $ ruby -Itest test/unit/pages/train/timetable_test.rb
 
 Run a single test matching the name "size".
 
-    $ ruby -Itest test/unit/page/train/timetable_test.rb -n /size/
+    $ ruby -Itest test/unit/pages/train/timetable_test.rb -n /size/
 
 ## Contributing
 
@@ -101,4 +103,4 @@ If you would like to help, please browse the [issues](https://github.com/tatey/t
 Doing something interesting with this data? Shoot me an [e-mail](mailto:tate@tatey.com). I'd love to see how
 this is being used. An acknowledgement of this project is appreciated, but not required.
 
-Copyright © 2011-2012 Tate Johnson. Released under the MIT license. See LICENSE.
+Copyright © 2011-2013 Tate Johnson. Released under the MIT license. See LICENSE.
