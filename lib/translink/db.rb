@@ -19,7 +19,7 @@ module Translink
 
             DROP TABLE IF EXISTS "trips";
             CREATE TABLE "trips" (
-              "trip_id" INTEGER NOT NULL PRIMARY KEY UNIQUE,
+              "trip_id" TEXT NOT NULL PRIMARY KEY UNIQUE,
               "direction" INTEGER NOT NULL,
               "headsign" TEXT NOT NULL,
               "route_id" TEXT NOT NULL,

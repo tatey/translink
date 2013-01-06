@@ -8,7 +8,7 @@ module Translink
       property :arrival_time,  String,  :key => true
       property :stop_sequence, Integer
       property :stop_id,       String,  :key => true
-      property :trip_id,       Integer, :key => true
+      property :trip_id,       String,  :key => true
 
       belongs_to :stop
       belongs_to :trip

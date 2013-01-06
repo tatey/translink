@@ -34,7 +34,7 @@ module Translink
       page.search('a.map-link-top').select do |anchor|
         date_from_anchor(anchor) == date
       end.map do |anchor|
-        Trip.new url_from_href(anchor[:href]), date, direction_from_anchor(anchor)
+        Trip.new url_from_href(anchor[:href]), date, direction_from_anchor(anchor), route_id
       end
     end
 

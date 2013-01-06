@@ -57,15 +57,18 @@ module Translink
     attr_accessor :date      # [Date] Date the trip runs on.
     attr_accessor :direction # [Integer] Travel in one direction (Regular)
                              # or the opposite (Goofy) direction.
+    attr_accessor :route_id  # [String] ID of route this trip belongs to.
 
     # Creates a new trip.
     #
     # @param url [String] URL to fetch the page from.
     # @param date [Date] Date the trip runs on.
-    def initialize url, date, direction
+    # @param route_id [String] ID of route this trip belongs to.
+    def initialize url, date, direction, route_id
       super url
-      @date = date.to_date
+      @date      = date.to_date
       @direction = direction
+      @route_id  = route_id
     end
 
     # Get the trip's headsign.
@@ -82,6 +85,13 @@ module Translink
     def trip_id
       url.to_s =~ /information\/[a-z]+\/[^\/]+\/([^\/]+)/
       $1
+    end
+
+    # Get the unique trip ID.
+    #
+    # @return [String]
+    def unique_trip_id
+      "#{route_id}_#{trip_id}"
     end
 
     # Builds an unique array of stop times.

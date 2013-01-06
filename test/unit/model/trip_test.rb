@@ -2,12 +2,12 @@ require 'helper'
 
 class Model::TripTest < MiniTest::Unit::TestCase
   def test_trip_page_with_bang
-    trip_page  = OpenStruct.new :direction => Direction::REGULAR, :headsign => 'outbound', :trip_id => 1712196
+    trip_page  = OpenStruct.new :direction => Direction::REGULAR, :headsign => 'outbound', :unique_trip_id => '130_1712196'
     trip_model = Model::Trip.new
     trip_model.trip_page! trip_page
     assert_equal trip_model.direction, trip_page.direction
     assert_equal trip_model.headsign, trip_page.headsign
-    assert_equal trip_model.id, trip_page.trip_id
+    assert_equal trip_model.id, trip_page.unique_trip_id
   end
 
   def test_add_stop_time_from_stop_time_page

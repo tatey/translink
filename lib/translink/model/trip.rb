@@ -5,8 +5,8 @@ module Translink
 
       storage_names[:default] = 'trips'
 
-      # Primary key. Unique ID assigned by Translink.
-      property :id, Serial, :field => 'trip_id'
+      # Primary key. Unique ID is a combination of route_id and trip_id.
+      property :id, String, :field => 'trip_id', :key => true, :unique => true, :unique_index => true
 
       # Travel in one direction (Regular) or the opposite (Goofy) direction.
       property :direction, Integer
@@ -38,12 +38,12 @@ module Translink
         end
       end
 
-      # Sets properties from the given +trip_page+. 
+      # Sets properties from the given +trip_page+.
       #
       # @param trip_page [Trip::Page] HTML page that represents the trip.
       # @return [void]
       def trip_page! trip_page
-        self.id         = trip_page.trip_id
+        self.id         = trip_page.unique_trip_id
         self.direction  = trip_page.direction
         self.headsign   = trip_page.headsign
       end
