@@ -34,17 +34,24 @@ class Translink::Crawler::TryExceptionTest < MiniTest::Unit::TestCase
       @count
     end
 
-    def crawl
-      try do
+    def crawl out
+      try out do
         @count = @count + 1
-        raise
+        raise StandardError, 'Exceptionally exceptional'
       end
     end
   end
 
+  def test_try_writes_to_out
+    out     = StringIO.new
+    crawler = MockCrawler.new
+    crawler.crawl out
+    assert_match /Exceptionally exceptional/, out.string
+  end
+
   def test_try_retries_until_retry_count
     crawler = MockCrawler.new
-    crawler.crawl
+    crawler.crawl StringIO.new
     assert_equal 2, crawler.count
   end
 end

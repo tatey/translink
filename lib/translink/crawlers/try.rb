@@ -5,12 +5,15 @@ module Translink
         base.extend ClassMethods
       end
 
-      def try retry_count = 1, &block
+      def try out, retry_count = 1, &block
         block.call
       rescue => exception
         if retry_count < self.class.retry_count
           sleep self.class.sleep_duration * retry_count
-          try retry_count + 1, &block
+          try out, retry_count + 1, &block
+        else
+          out.puts "Skipping because of exception #{exception}"
+          out.puts exception.backtrace
         end
       end
 
