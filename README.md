@@ -1,3 +1,13 @@
+# Deprecated
+
+**TL;DR** This gem is deprecated and will no longer be maintained. You
+should source data from the [Queensland Government](https://data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-seq).
+
+This project was created to source public transport data for South-East
+Queensland. The Queensland Government has since released the data on their
+own website under a liberal license. I encourage you to source your
+data from an [officially supported source](https://data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-seq).
+
 # Translink
 
 [![Build Status](https://secure.travis-ci.org/tatey/translink.png)](http://travis-ci.org/tatey/translink)
